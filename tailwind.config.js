@@ -10,29 +10,29 @@ module.exports = {
     extend: {
       colors: {
         primary: {
-          DEFAULT: '#2563eb',
-          light: '#3b82f6',
-          dark: '#1d4ed8',
+          DEFAULT: '#1E5631', // Dark green
+          light: '#2E7D32',   // Medium green
+          dark: '#0F401A',    // Deeper green
         },
         secondary: {
-          DEFAULT: '#64748b',
-          light: '#94a3b8',
-          dark: '#475569',
+          DEFAULT: '#9E9E9E', // Medium gray
+          light: '#E0E0E0',   // Light gray
+          dark: '#757575',    // Dark gray
         },
         background: {
-          primary: '#ffffff',
-          secondary: '#f8fafc',
-          tertiary: '#f1f5f9',
-          dark: '#0f172a',
+          primary: '#F5F5F5', // Very light gray
+          secondary: '#EEEEEE', // Light gray background
+          tertiary: '#E0E0E0', // Medium light gray background
+          dark: '#1A3728',    // Dark green background
         },
         text: {
-          primary: '#1e293b',
-          secondary: '#475569',
-          light: '#f8fafc',
+          primary: '#212121', // Nearly black
+          secondary: '#424242', // Dark gray text
+          light: '#FAFAFA',   // Very light gray, nearly white
         },
         border: {
-          DEFAULT: '#e2e8f0',
-          dark: '#cbd5e1',
+          DEFAULT: '#BDBDBD', // Medium gray border
+          dark: '#2E7D32',    // Green border
         },
       },
     },
