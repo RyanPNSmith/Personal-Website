@@ -44,72 +44,82 @@
 
 /* Base styles */
 body {
-  @apply text-text-primary bg-bg-primary;
+  color: var(--color-text-primary);
+  background: var(--color-bg-primary);
 }
 
 /* Component styles */
 .navbar {
-  @apply bg-bg-primary border-b border-border;
+  background: var(--color-bg-primary);
+  border-bottom: 1px solid var(--color-border);
 }
 
 .hero-section {
-  @apply bg-bg-secondary;
+  background: var(--color-bg-secondary);
 }
 
 .section-light {
-  @apply bg-bg-primary;
+  background: var(--color-bg-primary);
 }
 
 .section-dark {
-  @apply bg-bg-secondary;
+  background: var(--color-bg-secondary);
 }
 
 .section-accent {
-  @apply bg-bg-tertiary;
+  background: var(--color-bg-tertiary);
 }
 
 .footer {
-  @apply bg-bg-dark text-text-light;
+  background: var(--color-bg-dark);
+  color: var(--color-text-light);
 }
 
 /* Typography */
 .heading-primary {
-  @apply text-text-primary font-bold;
+  color: var(--color-text-primary);
+  font-weight: 700;
 }
 
 .heading-secondary {
-  @apply text-text-secondary font-semibold;
+  color: var(--color-text-secondary);
+  font-weight: 600;
 }
 
 .text-primary {
-  @apply text-text-primary;
+  color: var(--color-text-primary);
 }
 
 .text-secondary {
-  @apply text-text-secondary;
+  color: var(--color-text-secondary);
 }
 
 /* Links and interactive elements */
 .link {
-  @apply text-primary transition-colors duration-200;
+  color: var(--color-primary);
+  transition: color 0.2s ease;
 }
 
 .link:hover {
-  @apply text-primary-dark;
+  color: var(--color-primary-dark);
 }
 
 .button-primary {
-  @apply bg-primary text-text-light transition-colors duration-200;
+  background: var(--color-primary);
+  color: var(--color-text-light);
+  transition: background-color 0.2s ease;
 }
 
 .button-primary:hover {
-  @apply bg-primary-dark;
+  background: var(--color-primary-dark);
 }
 
 .button-secondary {
-  @apply bg-secondary text-text-light transition-colors duration-200;
+  background: var(--color-secondary);
+  color: var(--color-text-light);
+  transition: background-color 0.2s ease;
 }
 
 .button-secondary:hover {
-  @apply bg-secondary-dark;
+  background: var(--color-secondary-dark);
 } 
