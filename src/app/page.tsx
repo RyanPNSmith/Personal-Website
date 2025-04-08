@@ -31,6 +31,40 @@ export default function Home() {
   const [slidesPerView, setSlidesPerView] = useState(1.5);
   const totalSlides = 4; // Total number of project cards
 
+  // Helper function for smooth scrolling with offset
+  const smoothScrollWithOffset = (elementId: string) => {
+    const element = document.getElementById(elementId);
+    if (!element) return;
+    
+    const offset = 64; // Height of the navbar
+    const elementPosition = element.getBoundingClientRect().top;
+    const offsetPosition = elementPosition + window.pageYOffset - offset;
+    
+    window.scrollTo({
+      top: offsetPosition,
+      behavior: 'smooth'
+    });
+  };
+
+  // Function for smooth scrolling to sections
+  const scrollToSection = (e: React.MouseEvent<HTMLAnchorElement>, sectionId: string) => {
+    e.preventDefault();
+    
+    // Use regular hash navigation first, then smooth scroll if needed
+    window.location.hash = sectionId;
+    
+    // Then smooth scroll to the exact position
+    setTimeout(() => {
+      const element = document.getElementById(sectionId);
+      if (element) {
+        window.scrollTo({
+          top: element.offsetTop - 64, // Adjust for navbar height
+          behavior: 'smooth'
+        });
+      }
+    }, 0);
+  };
+
   // Form states
   const [formData, setFormData] = useState({
     firstName: '',
@@ -108,6 +142,26 @@ export default function Home() {
     return () => window.removeEventListener('resize', handleResize);
   }, []);
 
+  // Effect to handle hash navigation on page load
+  useEffect(() => {
+    // Check if there's a hash in the URL on load
+    if (window.location.hash) {
+      const id = window.location.hash.substring(1);
+      setTimeout(() => {
+        const element = document.getElementById(id);
+        if (element) {
+          window.scrollTo({
+            top: element.offsetTop - 64,
+            behavior: 'smooth'
+          });
+          console.log(`Scrolled to ${id} on load`);
+        } else {
+          console.log(`Element with id ${id} not found on load`);
+        }
+      }, 500); // Delay to ensure the page is fully loaded
+    }
+  }, []);
+
   const getProjectData = (index: number): ProjectData => {
     const projects: ProjectData[] = [
       {
@@ -140,29 +194,50 @@ export default function Home() {
   };
 
   return (
-    <div className="flex flex-col min-h-screen">
-      {/* Blurred Navigation Bar */}
-      <nav className="fixed top-0 left-0 w-full backdrop-blur-lg bg-background-dark/70 z-50 shadow-md border-b border-white/10">
+    <div className="flex flex-col min-h-screen bg-gradient-to-b from-black via-black to-background-dark">
+      {/* Blurred Navigation Bar with gradient */}
+      <nav className="fixed top-0 left-0 w-full backdrop-blur-lg bg-gradient-to-r from-black/70 to-background-dark/70 z-50 shadow-md border-b border-white/10">
         <div className="w-full px-0 sm:px-2">
           <div className="flex justify-between items-center h-16">
             <div className="text-white font-bold text-xl pl-4">Ryan Smith</div>
             <div className="flex space-x-8 pr-4">
-              <Link href="#about" className="text-white hover:text-secondary transition-colors text-lg">
-                works
-              </Link>
-              <Link href="#projects" className="text-white hover:text-secondary transition-colors text-lg">
+              <a 
+                href="#about" 
+                onClick={(e) => {
+                  e.preventDefault();
+                  document.getElementById('about')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }} 
+                className="text-white hover:text-secondary transition-colors text-lg"
+              >
                 about
-              </Link>
-              <Link href="#contact" className="text-white hover:text-secondary transition-colors text-lg">
+              </a>
+              <a 
+                href="#projects" 
+                onClick={(e) => {
+                  e.preventDefault();
+                  document.getElementById('projects')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }} 
+                className="text-white hover:text-secondary transition-colors text-lg"
+              >
+                projects
+              </a>
+              <a 
+                href="#contact" 
+                onClick={(e) => {
+                  e.preventDefault();
+                  document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }} 
+                className="text-white hover:text-secondary transition-colors text-lg"
+              >
                 contact
-              </Link>
+              </a>
             </div>
           </div>
         </div>
       </nav>
 
       {/* Hero Section */}
-      <section className="bg-primary text-text-light flex-grow flex flex-col items-center justify-center pt-20 bg-cover bg-center relative z-0 overflow-hidden">
+      <section className="bg-transparent text-text-light flex-grow flex flex-col items-center justify-center pt-20 bg-cover bg-center relative z-0 overflow-hidden">
         {/* Video Background */}
         <div className="absolute inset-0 w-full h-full z-0">
           <video
@@ -192,44 +267,57 @@ export default function Home() {
               SOFTWARE ENG
             </h1>
             <div className="flex items-center">
-              <span className="text-4xl mx-4">&</span>
+              <span className="text-5xl mx-4">&</span>
             </div>
             <h1 className="text-7xl sm:text-8xl md:text-9xl font-bold leading-none tracking-tighter">
               GAME DEV
             </h1>
           </div>
           
-          <div className="absolute bottom-32 right-16 max-w-md text-right">
-            <p className="text-lg">
+          <div className="absolute bottom-64 md:bottom-72 right-14 max-w-md text-right">
+            <p className="text-xl md:text-4xl">
               I AM A SOFTWARE ENGINEER AND GAME DEVELOPER BASED IN TEXAS. I DESIGN AND BUILD SOFTWARE AND GAMES. I LOVE NATURE, TECHNOLOGY AND ART.
             </p>
           </div>
           
-          <div className="absolute bottom-16 right-16">
-            <Link href="#about" className="border border-white/50 text-white hover:bg-white/10 transition-colors rounded-full px-8 py-3 inline-block">
+          <div className="absolute bottom-48 right-16">
+            <a 
+              href="#contact" 
+              onClick={(e) => {
+                e.preventDefault();
+                document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+              }} 
+              className="border border-white/50 text-white hover:bg-white/10 transition-colors rounded-full px-16 py-3 inline-block"
+            >
               CONTACT ME
-            </Link>
+            </a>
           </div>
         </div>
         
-        {/* Fade overlay transition instead of diagonal */}
-        <div className="absolute bottom-0 left-0 w-full h-32 bg-gradient-to-t from-background-dark to-transparent z-20"></div>
+        {/* Bottom fade gradient overlay */}
+        <div className="absolute bottom-0 left-0 w-full h-96 bg-gradient-to-t from-black via-black/30 to-transparent z-[2]"></div>
         
         {/* Scroll down indicator */}
         <div className="absolute bottom-32 left-1/2 transform -translate-x-1/2 z-20">
-          <Link href="#about">
+          <a 
+            href="#about" 
+            onClick={(e) => {
+              e.preventDefault();
+              document.getElementById('about')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            }}
+          >
             <div className="animate-bounce flex flex-col items-center cursor-pointer">
               <svg xmlns="http://www.w3.org/2000/svg" className="h-10 w-10 text-white opacity-70 hover:opacity-100 transition-opacity" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 14l-7 7m0 0l-7-7m7 7V3" />
               </svg>
               <span className="text-white text-sm opacity-70 hover:opacity-100 transition-opacity mt-2">Scroll Down</span>
             </div>
-          </Link>
+          </a>
         </div>
       </section>
 
-      {/* About Section - Now with dark background */}
-      <section id="about" className="bg-background-dark text-white py-28 relative z-10">
+      {/* About Section */}
+      <section id="about" className="bg-transparent text-white py-28 relative z-10 scroll-mt-16">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-12 pb-16">
           <div className="text-center mb-12 animate-fade-in-up" style={{ animationDelay: '0.2s' }}>
             <span className="inline-block h-1 w-20 bg-secondary rounded mb-4"></span>
@@ -242,13 +330,10 @@ export default function Home() {
             I've built experience through full-stack web development, Unity game projects, and IT support roles. While software engineering is my main focus, I'm also interested in game development and continue to explore it as a potential direction. I work well in team environments and enjoy collaborating with others to bring projects to life. I'm always excited and willing to learn new technologies and take on challenges that help me grow as a developer.
           </p>
         </div>
-        
-        {/* Fade transition to projects section */}
-        <div className="absolute bottom-0 left-0 w-full h-32 bg-gradient-to-t from-background-dark to-background-dark z-20"></div>
       </section>
 
       {/* Projects Section */}
-      <section id="projects" className="bg-background-dark text-white py-28 relative z-10">
+      <section id="projects" className="bg-transparent text-white py-28 relative z-10 scroll-mt-16">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-12 pb-16">
           <div className="text-center mb-16 animate-fade-in-up" style={{ animationDelay: '0.2s' }}>
             <span className="inline-block h-1 w-20 bg-secondary rounded mb-4"></span>
@@ -290,13 +375,10 @@ export default function Home() {
             </Swiper>
           </div>
         </div>
-        
-        {/* Fade transition to contact section */}
-        <div className="absolute bottom-0 left-0 w-full h-32 bg-gradient-to-t from-background-dark to-background-dark z-20"></div>
       </section>
 
       {/* Contact Section */}
-      <section id="contact" className="bg-background-dark text-white py-28 relative z-10">
+      <section id="contact" className="bg-transparent text-white py-28 relative z-10 scroll-mt-16">
         <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 pt-12 pb-16">
           <div className="text-center mb-12 animate-fade-in-up" style={{ animationDelay: '0.2s' }}>
             <span className="inline-block h-1 w-20 bg-secondary rounded mb-4"></span>
@@ -321,7 +403,7 @@ export default function Home() {
       </section>
 
       {/* Footer */}
-      <footer className="bg-background-dark border-t border-white/10 text-white/70 py-8">
+      <footer className="bg-transparent border-t border-white/10 text-white/70 py-8">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <p>&copy; {new Date().getFullYear()} Ryan Smith. All rights reserved.</p>
         </div>
