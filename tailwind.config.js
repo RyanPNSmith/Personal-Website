@@ -7,32 +7,38 @@ module.exports = {
   ],
   important: true,
   theme: {
+    fontFamily: {
+      sans: ['Inter', 'system-ui', 'sans-serif'],
+      serif: ['Inter', 'system-ui', 'sans-serif'],
+      mono: ['Inter', 'monospace'],
+      body: ['Inter', 'system-ui', 'sans-serif'],
+    },
     extend: {
       colors: {
         primary: {
-          DEFAULT: '#1E5631', // Dark green
-          light: '#2E7D32',   // Medium green
-          dark: '#0F401A',    // Deeper green
+          DEFAULT: '#2C3E50', // Deep winter blue
+          light: '#34495E',   // Medium navy blue
+          dark: '#1A2530',    // Darker blue
         },
         secondary: {
-          DEFAULT: '#9E9E9E', // Medium gray
-          light: '#E0E0E0',   // Light gray
-          dark: '#757575',    // Dark gray
+          DEFAULT: '#B3C6D1', // Icy blue/silver
+          light: '#D6E4EA',   // Light ice blue
+          dark: '#829DAD',    // Deeper icy blue
         },
         background: {
-          primary: '#F5F5F5', // Very light gray
-          secondary: '#EEEEEE', // Light gray background
-          tertiary: '#E0E0E0', // Medium light gray background
-          dark: '#1A3728',    // Dark green background
+          primary: '#F5F9FC', // Snow white/very light blue
+          secondary: '#ECF4F9', // Light blue-white
+          tertiary: '#D1E0EB', // Ice blue background
+          dark: '#20313F',    // Deep winter night blue
         },
         text: {
-          primary: '#212121', // Nearly black
-          secondary: '#424242', // Dark gray text
-          light: '#FAFAFA',   // Very light gray, nearly white
+          primary: '#1F2937', // Dark slate
+          secondary: '#4B5563', // Medium slate gray
+          light: '#FFFFFF',   // Pure white
         },
         border: {
-          DEFAULT: '#BDBDBD', // Medium gray border
-          dark: '#2E7D32',    // Green border
+          DEFAULT: '#B3C6D1', // Icy blue border
+          dark: '#2C3E50',    // Deep blue border
         },
       },
     },

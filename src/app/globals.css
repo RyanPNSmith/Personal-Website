@@ -2,9 +2,22 @@
 @tailwind components;
 @tailwind utilities;
 
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+  
+  /* Removing the Times New Roman override to allow Inter to be used */
+  /* html, body, * {
+    font-family: "Times New Roman", Times, serif !important;
+  } */
+}
+
 html, 
 body {
   height: 100%;
+  /* Removing Times New Roman reference */
+  /* font-family: "Times New Roman", Times, serif; */
 }
 
 /* Hide scrollbar for Chrome, Safari and Opera */
@@ -22,4 +35,20 @@ body {
 .touch-pan-x {
   touch-action: pan-x;
   -webkit-overflow-scrolling: touch;
+}
+
+/* Animation for section transitions */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fade-in-up {
+  animation: fadeInUp 0.8s ease-out forwards;
 }
