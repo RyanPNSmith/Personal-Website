@@ -123,12 +123,24 @@ export default function Home() {
   // Update slidesPerView based on window width
   useEffect(() => {
     const handleResize = () => {
-      if (window.innerWidth > 1200) {
+      if (window.innerWidth >= 1536) {
+        // 2xl breakpoint
+        setSlidesPerView(1.8);
+      } else if (window.innerWidth >= 1280) {
+        // xl breakpoint
         setSlidesPerView(1.5);
-      } else if (window.innerWidth > 768) {
+      } else if (window.innerWidth >= 1024) {
+        // lg breakpoint
         setSlidesPerView(1.3);
+      } else if (window.innerWidth >= 768) {
+        // md breakpoint
+        setSlidesPerView(1.2);
+      } else if (window.innerWidth >= 640) {
+        // sm breakpoint
+        setSlidesPerView(1.15);
       } else {
-        setSlidesPerView(1.1);
+        // xs breakpoint
+        setSlidesPerView(1.05);
       }
     };
 
@@ -262,32 +274,32 @@ export default function Home() {
         
         <div className="text-center px-4 py-32 w-full h-full flex flex-col items-center justify-center min-h-screen relative z-10">
           
-          <div className="absolute left-4 sm:left-8 top-1/2 transform -translate-y-1/2 flex flex-col items-start">
-            <h1 className="text-7xl sm:text-8xl md:text-9xl font-bold leading-none tracking-tighter">
+          <div className="absolute left-4 sm:left-8 md:left-16 top-1/2 transform -translate-y-1/2 flex flex-col items-start w-full md:w-auto">
+            <h1 className="text-5xl sm:text-7xl md:text-8xl lg:text-9xl font-bold leading-none tracking-tighter">
               SOFTWARE ENG
             </h1>
             <div className="flex items-center">
-              <span className="text-5xl mx-4">&</span>
+              <span className="text-3xl sm:text-4xl md:text-5xl mx-4">&</span>
             </div>
-            <h1 className="text-7xl sm:text-8xl md:text-9xl font-bold leading-none tracking-tighter">
+            <h1 className="text-5xl sm:text-7xl md:text-8xl lg:text-9xl font-bold leading-none tracking-tighter">
               GAME DEV
             </h1>
           </div>
           
-          <div className="absolute bottom-64 md:bottom-72 right-14 max-w-md text-right">
-            <p className="text-xl md:text-4xl">
+          <div className="absolute bottom-32 sm:bottom-48 md:bottom-64 lg:bottom-72 right-4 sm:right-8 md:right-14 max-w-xs sm:max-w-sm md:max-w-md text-right">
+            <p className="text-lg sm:text-xl md:text-2xl lg:text-4xl">
               I AM A SOFTWARE ENGINEER AND GAME DEVELOPER BASED IN TEXAS. I DESIGN AND BUILD SOFTWARE AND GAMES. I LOVE NATURE, TECHNOLOGY AND ART.
             </p>
           </div>
           
-          <div className="absolute bottom-48 right-16">
+          <div className="absolute bottom-16 sm:bottom-32 md:bottom-48 right-8 sm:right-16">
             <a 
               href="#contact" 
               onClick={(e) => {
                 e.preventDefault();
-                document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                smoothScrollWithOffset('contact');
               }} 
-              className="border border-white/50 text-white hover:bg-white/10 transition-colors rounded-full px-16 py-3 inline-block"
+              className="border border-white/50 text-white hover:bg-white/10 transition-colors rounded-full px-8 md:px-16 py-3 inline-block text-sm sm:text-base md:text-lg"
             >
               CONTACT ME
             </a>
@@ -413,10 +425,22 @@ export default function Home() {
       <style jsx global>{`
         .swiper-container {
           width: 100%;
-          padding: 70px 60px 80px;
+          padding: 40px 30px 60px;
           overflow: visible !important;
           position: relative;
           z-index: 1;
+        }
+        
+        @media (min-width: 640px) {
+          .swiper-container {
+            padding: 50px 40px 70px;
+          }
+        }
+        
+        @media (min-width: 768px) {
+          .swiper-container {
+            padding: 70px 60px 80px;
+          }
         }
         
         .swiper-wrapper {
@@ -427,8 +451,8 @@ export default function Home() {
         }
         
         .swiper-slide {
-          width: 700px;
-          height: 600px;
+          width: 300px;
+          height: 450px;
           background-position: center;
           background-size: cover;
           transition: all 700ms ease;
@@ -439,6 +463,27 @@ export default function Home() {
           box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
           background: linear-gradient(145deg, rgba(32, 49, 63, 0.8), rgba(32, 49, 63, 0.95));
           position: relative;
+        }
+        
+        @media (min-width: 640px) {
+          .swiper-slide {
+            width: 450px;
+            height: 500px;
+          }
+        }
+        
+        @media (min-width: 1024px) {
+          .swiper-slide {
+            width: 550px;
+            height: 550px;
+          }
+        }
+        
+        @media (min-width: 1280px) {
+          .swiper-slide {
+            width: 700px;
+            height: 600px;
+          }
         }
         
         .swiper-slide-active {
@@ -456,12 +501,6 @@ export default function Home() {
           opacity: 0.8;
           filter: brightness(0.9) blur(0px);
           z-index: 5;
-        }
-        
-        @media (max-width: 1200px) {
-          .swiper-slide {
-            width: 550px;
-          }
         }
         
         @media (max-width: 768px) {
@@ -484,6 +523,14 @@ export default function Home() {
           border: 1px solid rgba(179, 198, 209, 0.3);
           box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
           z-index: 20;
+        }
+        
+        @media (max-width: 640px) {
+          .swiper-button-next,
+          .swiper-button-prev {
+            width: 30px !important;
+            height: 30px !important;
+          }
         }
         
         .swiper-button-next:after,
@@ -513,6 +560,18 @@ export default function Home() {
           overflow: hidden;
           position: relative;
         }
+        
+        /* Additional responsive adjustments */
+        @media (max-width: 640px) {
+          .swiper-pagination {
+            bottom: 0px !important;
+          }
+          
+          #about, #projects, #contact {
+            padding-top: 4rem;
+            padding-bottom: 4rem;
+          }
+        }
       `}</style>
     </div>
   )
@@ -522,29 +581,29 @@ export default function Home() {
 function ProjectCard({ project, isActive }: ProjectCardProps) {
   return (  
     <div 
-      className="bg-gradient-to-br from-background-dark/80 to-background-dark p-8 sm:p-10 shadow-lg border border-secondary/30 flex flex-col rounded-xl h-full transition-all"
+      className="bg-gradient-to-br from-background-dark/80 to-background-dark p-4 sm:p-6 md:p-8 lg:p-10 shadow-lg border border-secondary/30 flex flex-col rounded-xl h-full transition-all"
     >
-      <div className="bg-secondary/20 p-5 rounded-lg mb-6 inline-block backdrop-blur-sm">
-        <svg xmlns="http://www.w3.org/2000/svg" className="h-10 w-10 text-secondary" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+      <div className="bg-secondary/20 p-3 sm:p-4 md:p-5 rounded-lg mb-4 sm:mb-6 inline-block backdrop-blur-sm">
+        <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 sm:h-8 sm:w-8 md:h-10 md:w-10 text-secondary" fill="none" viewBox="0 0 24 24" stroke="currentColor">
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d={project.icon} />
         </svg>
       </div>
-      <h3 className="text-3xl font-bold text-white mb-4">
+      <h3 className="text-xl sm:text-2xl md:text-3xl font-bold text-white mb-2 sm:mb-4">
         {project.title}
       </h3>
-      <p className="text-lg text-white/80 mb-8 flex-grow">
+      <p className="text-sm sm:text-base md:text-lg text-white/80 mb-4 sm:mb-6 md:mb-8 flex-grow">
         {project.description}
       </p>
-      <div className="flex flex-wrap gap-2 mb-8">
+      <div className="flex flex-wrap gap-1 sm:gap-2 mb-4 sm:mb-6 md:mb-8">
         {project.tags.map((tag: string, index: number) => (
-          <span key={index} className="bg-secondary/20 text-white px-4 py-1.5 rounded-full text-sm font-medium backdrop-blur-sm border border-secondary/30">
+          <span key={index} className="bg-secondary/20 text-white px-2 sm:px-3 md:px-4 py-1 sm:py-1.5 rounded-full text-xs sm:text-sm font-medium backdrop-blur-sm border border-secondary/30">
             {tag}
           </span>
         ))}
       </div>
-      <a href="#" className={`text-secondary hover:text-secondary-light transition-colors inline-flex items-center mt-auto text-lg font-medium group ${isActive ? '' : 'pointer-events-none opacity-70'}`}>
+      <a href="#" className={`text-secondary hover:text-secondary-light transition-colors inline-flex items-center mt-auto text-sm sm:text-base md:text-lg font-medium group ${isActive ? '' : 'pointer-events-none opacity-70'}`}>
         View Project
-        <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 ml-2 transform group-hover:translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 sm:h-5 sm:w-5 ml-2 transform group-hover:translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor">
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
         </svg>
       </a>
