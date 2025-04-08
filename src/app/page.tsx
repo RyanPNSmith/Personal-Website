@@ -46,23 +46,18 @@ export default function Home() {
     });
   };
 
-  // Function for smooth scrolling to sections
-  const scrollToSection = (e: React.MouseEvent<HTMLAnchorElement>, sectionId: string) => {
-    e.preventDefault();
-    
-    // Use regular hash navigation first, then smooth scroll if needed
-    window.location.hash = sectionId;
-    
-    // Then smooth scroll to the exact position
-    setTimeout(() => {
-      const element = document.getElementById(sectionId);
-      if (element) {
-        window.scrollTo({
-          top: element.offsetTop - 64, // Adjust for navbar height
-          behavior: 'smooth'
-        });
-      }
-    }, 0);
+  // A consistent scroll function for all navigation links
+  const scrollToElement = (id: string) => {
+    const offset = 64; // Height of navbar
+    const element = document.getElementById(id);
+    if (element) {
+      const elementPosition = element.getBoundingClientRect().top;
+      const offsetPosition = elementPosition + window.scrollY - offset;
+      window.scrollTo({
+        top: offsetPosition,
+        behavior: 'smooth'
+      });
+    }
   };
 
   // Form states
@@ -217,7 +212,7 @@ export default function Home() {
                 href="#about" 
                 onClick={(e) => {
                   e.preventDefault();
-                  document.getElementById('about')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                  scrollToElement('about');
                 }} 
                 className="text-white hover:text-secondary transition-colors text-lg"
               >
@@ -227,7 +222,7 @@ export default function Home() {
                 href="#projects" 
                 onClick={(e) => {
                   e.preventDefault();
-                  document.getElementById('projects')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                  scrollToElement('projects');
                 }} 
                 className="text-white hover:text-secondary transition-colors text-lg"
               >
@@ -237,7 +232,7 @@ export default function Home() {
                 href="#contact" 
                 onClick={(e) => {
                   e.preventDefault();
-                  document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                  scrollToElement('contact');
                 }} 
                 className="text-white hover:text-secondary transition-colors text-lg"
               >
@@ -297,7 +292,7 @@ export default function Home() {
               href="#contact" 
               onClick={(e) => {
                 e.preventDefault();
-                smoothScrollWithOffset('contact');
+                scrollToElement('contact');
               }} 
               className="border border-white/50 text-white hover:bg-white/10 transition-colors rounded-full px-8 md:px-16 py-3 inline-block text-sm sm:text-base md:text-lg"
             >
@@ -311,20 +306,37 @@ export default function Home() {
         
         {/* Scroll down indicator */}
         <div className="absolute bottom-32 left-1/2 transform -translate-x-1/2 z-20">
-          <a 
-            href="#about" 
-            onClick={(e) => {
-              e.preventDefault();
-              document.getElementById('about')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+          <button 
+            onClick={() => {
+              const aboutSection = document.getElementById('about');
+              if (aboutSection) {
+                aboutSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+              }
             }}
+            className="border-none bg-transparent cursor-pointer focus:outline-none"
+            aria-label="Scroll to About section"
           >
-            <div className="animate-bounce flex flex-col items-center cursor-pointer">
-              <svg xmlns="http://www.w3.org/2000/svg" className="h-10 w-10 text-white opacity-70 hover:opacity-100 transition-opacity" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 14l-7 7m0 0l-7-7m7 7V3" />
-              </svg>
-              <span className="text-white text-sm opacity-70 hover:opacity-100 transition-opacity mt-2">Scroll Down</span>
+            <div className="flex flex-col items-center cursor-pointer">
+              <div className="animate-subtle-bounce flex flex-col items-center">
+                <img 
+                  src="/PixelChain-export.png" 
+                  alt="Chain" 
+                  className="h-8 w-auto opacity-80 hover:opacity-100 transition-opacity rotate-180" 
+                />
+                <img 
+                  src="/PixelChain-export.png" 
+                  alt="Chain" 
+                  className="h-8 w-auto opacity-80 hover:opacity-100 transition-opacity -mt-1"
+                />
+                <img 
+                  src="/PixelAnchor-export.png" 
+                  alt="Anchor" 
+                  className="h-16 w-auto opacity-80 hover:opacity-100 transition-opacity -mt-1"
+                />
+              </div>
+              <span className="text-secondary text-sm opacity-70 hover:opacity-100 transition-opacity mt-2">Scroll Down</span>
             </div>
-          </a>
+          </button>
         </div>
       </section>
 
