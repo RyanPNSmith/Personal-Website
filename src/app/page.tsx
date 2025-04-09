@@ -4,6 +4,8 @@ import Link from 'next/link'
 import { useState, useEffect, FormEvent } from 'react'
 import { Swiper, SwiperSlide } from 'swiper/react'
 import { EffectCoverflow, Pagination, Navigation } from 'swiper/modules'
+import { motion, AnimatePresence } from 'framer-motion'
+import Image from 'next/image'
 
 // Import Swiper styles
 import 'swiper/css'
@@ -200,6 +202,8 @@ export default function Home() {
     return projects[index % totalSlides];
   };
 
+  const [activeSection, setActiveSection] = useState('Biography');
+
   return (
     <div className="flex flex-col min-h-screen bg-gradient-to-b from-black via-black to-background-dark">
       {/* Blurred Navigation Bar with gradient */}
@@ -269,25 +273,55 @@ export default function Home() {
         
         <div className="text-center px-4 py-32 w-full h-full flex flex-col items-center justify-center min-h-screen relative z-10">
           
-          <div className="absolute left-4 sm:left-8 md:left-16 top-1/2 transform -translate-y-1/2 flex flex-col items-start w-full md:w-auto">
-            <h1 className="text-5xl sm:text-7xl md:text-8xl lg:text-9xl font-bold leading-none tracking-tighter">
+          <motion.div 
+            className="absolute left-4 sm:left-6 md:left-12 top-[35%] transform -translate-y-1/2 flex flex-col items-start w-full md:w-auto"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.8 }}
+          >
+            <motion.h1 
+              className="text-[2vw] sm:text-[3vw] md:text-[4vw] lg:text-[6vw] font-bold leading-[0.8] tracking-tighter"
+              initial={{ opacity: 0, x: -100 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 2, delay: 0.4, ease: "easeOut" }}
+            >
               SOFTWARE ENG
-            </h1>
-            <div className="flex items-center">
-              <span className="text-3xl sm:text-4xl md:text-5xl mx-4">&</span>
-            </div>
-            <h1 className="text-5xl sm:text-7xl md:text-8xl lg:text-9xl font-bold leading-none tracking-tighter">
+            </motion.h1>
+            <motion.div 
+              className="flex items-center"
+              initial={{ opacity: 0, scale: 0.5 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 1, delay: 0.6 }}
+            >
+              <span className="text-[3vw] sm:text-[3.5vw] md:text-[4vw] mx-4">&</span>
+            </motion.div>
+            <motion.h1 
+              className="text-[4vw] sm:text-[3vw] md:text-[4vw] lg:text-[6vw] font-bold leading-[0.9] tracking-tighter"
+              initial={{ opacity: 0, x: 100 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 2, delay: 0.4, ease: "easeOut" }}
+            >
               GAME DEV
-            </h1>
-          </div>
+            </motion.h1>
+          </motion.div>
           
-          <div className="absolute bottom-32 sm:bottom-48 md:bottom-64 lg:bottom-72 right-4 sm:right-8 md:right-14 max-w-xs sm:max-w-sm md:max-w-md text-right">
-            <p className="text-lg sm:text-xl md:text-2xl lg:text-4xl">
+          <motion.div 
+            className="absolute bottom-32 sm:bottom-48 md:bottom-64 lg:bottom-72 right-4 sm:right-8 md:right-14 max-w-[60vw] sm:max-w-[45vw] md:max-w-[35vw] lg:max-w-[30vw] text-right"
+            initial={{ opacity: 0, y: 50 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 1, delay: 1.0, ease: "easeOut" }}
+          >
+            <p className="text-[1.8vw] sm:text-[1.8vw] md:text-[2vw] lg:text-[1.3vw]">
               I AM A SOFTWARE ENGINEER AND GAME DEVELOPER BASED IN TEXAS. I DESIGN AND BUILD SOFTWARE AND GAMES. I LOVE NATURE, TECHNOLOGY AND ART.
             </p>
-          </div>
+          </motion.div>
           
-          <div className="absolute bottom-16 sm:bottom-32 md:bottom-48 right-8 sm:right-16">
+          <motion.div 
+            className="absolute bottom-16 sm:bottom-32 md:bottom-48 right-8 sm:right-16"
+            initial={{ opacity: 0, scale: 0.8 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 1.5, delay: 1.0, ease: "easeOut" }}
+          >
             <a 
               href="#contact" 
               onClick={(e) => {
@@ -298,14 +332,25 @@ export default function Home() {
             >
               CONTACT ME
             </a>
-          </div>
+          </motion.div>
         </div>
         
         {/* Bottom fade gradient overlay */}
-        <div className="absolute bottom-0 left-0 w-full h-96 bg-gradient-to-t from-black via-black/30 to-transparent z-[2]"></div>
+        <div className="absolute bottom-0 left-0 w-full h-[40vh] bg-gradient-to-t from-black via-black/30 to-transparent z-[2]"></div>
         
         {/* Scroll down indicator */}
-        <div className="absolute bottom-32 left-1/2 transform -translate-x-1/2 z-20">
+        <motion.div 
+          className="absolute bottom-[15vh] left-1/2 transform -translate-x-1/2 z-20"
+          initial={{ opacity: 0, y: -100 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ 
+            duration: 0.8, 
+            delay: 4.0,
+            type: "spring",
+            stiffness: 100,
+            damping: 15
+          }}
+        >
           <button 
             onClick={() => {
               const aboutSection = document.getElementById('about');
@@ -333,35 +378,202 @@ export default function Home() {
                   alt="Anchor" 
                   className="h-16 w-auto opacity-80 hover:opacity-100 transition-opacity -mt-1"
                 />
+                
               </div>
               <span className="text-secondary text-sm opacity-70 hover:opacity-100 transition-opacity mt-2">Scroll Down</span>
             </div>
           </button>
-        </div>
+        </motion.div>
       </section>
 
       {/* About Section */}
-      <section id="about" className="bg-transparent text-white py-28 relative z-10 scroll-mt-16">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-12 pb-16">
-          <div className="text-center mb-12 animate-fade-in-up" style={{ animationDelay: '0.2s' }}>
-            <span className="inline-block h-1 w-20 bg-secondary rounded mb-4"></span>
-            <h2 className="text-3xl font-bold text-white mb-8">About Me</h2>
+      <section id="about" className="bg-transparent text-white py-[20vh] relative z-10 scroll-mt-16 mt-[15vh]">
+        <motion.div 
+          className="w-[95vw] max-w-[2000px] mx-auto pt-[8vh] pb-[8vh] min-h-[90vh]"
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.3 }}
+          transition={{ duration: 0.8, ease: "easeOut" }}
+          variants={{
+            hidden: { opacity: 0, y: 50 },
+            visible: { opacity: 1, y: 0 },
+          }}
+        >
+          <div className="mb-[8vh] pl-[4vw]">
+            <motion.h2 
+              className="text-[2.5vw] sm:text-[2.8vw] md:text-[3vw] lg:text-[3.2vw] font-bold text-white tracking-tighter relative inline-block"
+              initial={{ opacity: 0, x: -50 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.8, ease: "easeOut" }}
+            >
+              ABOUT ME
+              <motion.div 
+                className="absolute -bottom-2 left-0 w-full h-[2px] bg-secondary"
+                initial={{ scaleX: 0 }}
+                animate={{ scaleX: 1 }}
+                transition={{ duration: 0.8, delay: 0.4 }}
+              />
+            </motion.h2>
           </div>
-          <p className="text-lg text-white/80 text-center max-w-4xl mx-auto animate-fade-in-up leading-relaxed" style={{ animationDelay: '0.4s' }}>
-            Hello, my name is Ryan Smith, I'm a senior at Texas Christian University majoring in Computer Science, graduating in May 2025. I currently serve as President of the Computer Science Society, where I independently organize technical workshops, guest speaker events, and student engagement opportunities. I'm passionate about software engineering and plan to pursue it as my primary career path.
-          </p>
-          <p className="text-lg text-white/80 text-center max-w-4xl mx-auto animate-fade-in-up mt-6 leading-relaxed" style={{ animationDelay: '0.5s' }}>
-            I've built experience through full-stack web development, Unity game projects, and IT support roles. While software engineering is my main focus, I'm also interested in game development and continue to explore it as a potential direction. I work well in team environments and enjoy collaborating with others to bring projects to life. I'm always excited and willing to learn new technologies and take on challenges that help me grow as a developer.
-          </p>
-        </div>
+
+          <div className="flex gap-[4vw] px-[4vw] min-h-[70vh]">
+            {/* Left Navigation */}
+            <div className="w-[15vw] min-w-[150px] flex flex-col gap-[3vh]">
+              {['Biography', 'Involvement', 'Personal Life'].map((section) => (
+                <motion.button
+                  key={section}
+                  onClick={() => setActiveSection(section)}
+                  className={`text-left py-[1.5vh] px-[1.2vw] rounded-lg transition-all text-[1vw] min-text-[14px] ${
+                    activeSection === section 
+                      ? 'bg-secondary/20 text-white border-l-4 border-secondary font-medium' 
+                      : 'text-white/60 hover:text-white hover:bg-white/5'
+                  }`}
+                  whileHover={{ x: 5 }}
+                  whileTap={{ scale: 0.95 }}
+                >
+                  {section}
+                </motion.button>
+              ))}
+            </div>
+
+            {/* Content Area */}
+            <div className="flex-1 relative min-h-[60vh]">
+              <AnimatePresence mode="wait">
+                {activeSection === 'Biography' && (
+                  <motion.div
+                    key="biography"
+                    initial={{ opacity: 0, x: 20 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    exit={{ opacity: 0, x: -20 }}
+                    transition={{ duration: 0.3 }}
+                    className="absolute w-full"
+                  >
+                    <p className="text-[1vw] min-text-[14px] text-white/80 leading-relaxed">
+                      Hello, my name is Ryan Smith, I'm a senior at Texas Christian University majoring in Computer Science, graduating in May 2025. I'm passionate about software engineering and plan to pursue it as my primary career path. My journey in technology began with early experiments in game development, which evolved into a deep fascination with software engineering and its potential to create impactful solutions.
+                    </p>
+                  </motion.div>
+                )}
+
+                {activeSection === 'Involvement' && (
+                  <motion.div
+                    key="involvement"
+                    initial={{ opacity: 0, x: 20 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    exit={{ opacity: 0, x: -20 }}
+                    transition={{ duration: 0.3 }}
+                    className="absolute w-full"
+                  >
+                    <div className="space-y-8">
+                      <div>
+                        <h3 className="text-[1.5vw] min-text-[18px] font-bold text-secondary mb-4">Computer Science Society President</h3>
+                        <p className="text-[1vw] min-text-[14px] text-white/80 leading-relaxed">
+                          As President of the Computer Science Society, I lead a vibrant community of tech enthusiasts, organizing technical workshops, guest speaker events, and student engagement opportunities. I've built experience through full-stack web development, Unity game projects, and IT support roles.
+                        </p>
+                      </div>
+                      
+                      <div>
+                        <h3 className="text-[1.5vw] min-text-[18px] font-bold text-secondary mb-4">TCU Esports League of Legends Team</h3>
+                        <div className="flex flex-col gap-6">
+                          <p className="text-[1vw] min-text-[14px] text-white/80 leading-relaxed">
+                            Competing in collegiate League of Legends tournaments, I've developed strong teamwork and strategic thinking skills while representing TCU in esports competitions. This experience has enhanced my ability to work under pressure and collaborate effectively in high-stakes environments.
+                          </p>
+                          <div className="w-[80%] mx-auto">
+                            <Swiper
+                              effect={'coverflow'}
+                              grabCursor={true}
+                              centeredSlides={true}
+                              slidesPerView={1}
+                              coverflowEffect={{
+                                rotate: 0,
+                                stretch: 0,
+                                depth: 100,
+                                modifier: 1,
+                                slideShadows: false,
+                              }}
+                              pagination={{ clickable: true }}
+                              navigation={true}
+                              modules={[EffectCoverflow, Pagination, Navigation]}
+                              className="esports-swiper"
+                            >
+                              <SwiperSlide>
+                                <div className="aspect-[16/9] relative rounded-lg overflow-hidden border border-secondary/30 h-[40vh]">
+                                  <Image
+                                    src="/Skillet.jpg"
+                                    alt="TCU Esports League of Legends Team"
+                                    fill
+                                    className="object-cover"
+                                    priority
+                                  />
+                                </div>
+                              </SwiperSlide>
+                              <SwiperSlide>
+                                <div className="aspect-[16/9] relative rounded-lg overflow-hidden border border-secondary/30 h-[40vh]">
+                                  <Image
+                                    src="/SkilletBump.jpg"
+                                    alt="TCU Esports Team Practice"
+                                    fill
+                                    className="object-cover"
+                                    priority
+                                  />
+                                </div>
+                              </SwiperSlide>
+                              <SwiperSlide>
+                                <div className="aspect-[16/9] relative rounded-lg overflow-hidden border border-secondary/30 h-[40vh]">
+                                  <Image
+                                    src="/SkilletGame.jpg"
+                                    alt="TCU Esports Team Match"
+                                    fill
+                                    className="object-cover"
+                                    priority
+                                  />
+                                </div>
+                              </SwiperSlide>
+                            </Swiper>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </motion.div>
+                )}
+
+                {activeSection === 'Personal Life' && (
+                  <motion.div
+                    key="personal"
+                    initial={{ opacity: 0, x: 20 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    exit={{ opacity: 0, x: -20 }}
+                    transition={{ duration: 0.3 }}
+                    className="absolute w-full"
+                  >
+                    <p className="text-[1vw] min-text-[14px] text-white/80 leading-relaxed">
+                      Beyond coding, I'm deeply passionate about nature and outdoor activities. I find inspiration in the intersection of technology and art, often exploring creative coding projects in my free time. I believe in maintaining a healthy work-life balance and continuously learning from both professional experiences and personal interests. When not coding, you might find me hiking, experimenting with digital art, or contributing to open-source projects.
+                    </p>
+                  </motion.div>
+                )}
+              </AnimatePresence>
+            </div>
+          </div>
+        </motion.div>
       </section>
 
       {/* Projects Section */}
       <section id="projects" className="bg-transparent text-white py-28 relative z-10 scroll-mt-16">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-12 pb-16">
-          <div className="text-center mb-16 animate-fade-in-up" style={{ animationDelay: '0.2s' }}>
-            <span className="inline-block h-1 w-20 bg-secondary rounded mb-4"></span>
-            <h2 className="text-3xl font-bold text-white mb-8">My Projects</h2>
+        <div className="max-w-7xl mx-auto pt-12 pb-16">
+          <div className="mb-20 pl-4 sm:pl-6 md:pl-12">
+            <motion.h2 
+              className="text-[3vw] sm:text-[3.5vw] md:text-[4vw] lg:text-[4.5vw] font-bold text-white tracking-tighter relative inline-block"
+              initial={{ opacity: 0, x: -50 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.8, ease: "easeOut" }}
+            >
+              PROJECTS
+              <motion.div 
+                className="absolute -bottom-2 left-0 w-full h-[2px] bg-secondary"
+                initial={{ scaleX: 0 }}
+                animate={{ scaleX: 1 }}
+                transition={{ duration: 0.8, delay: 0.4 }}
+              />
+            </motion.h2>
           </div>
           
           {/* Project cards with Swiper */}
@@ -403,25 +615,38 @@ export default function Home() {
 
       {/* Contact Section */}
       <section id="contact" className="bg-transparent text-white py-28 relative z-10 scroll-mt-16">
-        <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 pt-12 pb-16">
-          <div className="text-center mb-12 animate-fade-in-up" style={{ animationDelay: '0.2s' }}>
-            <span className="inline-block h-1 w-20 bg-secondary rounded mb-4"></span>
-            <h2 className="text-3xl font-bold text-white mb-8">Get in Touch</h2>
-            <p className="text-lg text-white/80 mb-12 animate-fade-in-up" style={{ animationDelay: '0.4s' }}>
-              Feel free to reach out to me with any questions or opportunities.
-            </p>
-            
-            <div className="flex flex-col items-center justify-center mt-8 animate-fade-in-up" style={{ animationDelay: '0.6s' }}>
-              <a 
-                href="mailto:ryanpsmith2003@outlook.com" 
-                className="inline-flex items-center px-8 py-4 bg-secondary text-background-dark rounded-md hover:bg-secondary-light focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-secondary transition-all transform hover:scale-105 duration-200 text-lg font-medium"
-              >
-                <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 mr-3" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
-                </svg>
-                ryanpsmith2003@outlook.com
-              </a>
-            </div>
+        <div className="max-w-7xl mx-auto pt-12 pb-16">
+          <div className="mb-20 pl-4 sm:pl-6 md:pl-12">
+            <motion.h2 
+              className="text-[3vw] sm:text-[3.5vw] md:text-[4vw] lg:text-[4.5vw] font-bold text-white tracking-tighter relative inline-block"
+              initial={{ opacity: 0, x: -50 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.8, ease: "easeOut" }}
+            >
+              CONTACT
+              <motion.div 
+                className="absolute -bottom-2 left-0 w-full h-[2px] bg-secondary"
+                initial={{ scaleX: 0 }}
+                animate={{ scaleX: 1 }}
+                transition={{ duration: 0.8, delay: 0.4 }}
+              />
+            </motion.h2>
+          </div>
+          
+          <p className="text-lg text-white/80 mb-12 max-w-2xl">
+            Feel free to reach out to me with any questions or opportunities.
+          </p>
+          
+          <div className="flex flex-col items-start justify-start mt-8">
+            <a 
+              href="mailto:ryanpsmith2003@outlook.com" 
+              className="inline-flex items-center px-8 py-4 bg-secondary text-background-dark rounded-md hover:bg-secondary-light focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-secondary transition-all transform hover:scale-105 duration-200 text-lg font-medium"
+            >
+              <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 mr-3" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+              </svg>
+              ryanpsmith2003@outlook.com
+            </a>
           </div>
         </div>
       </section>
@@ -583,6 +808,53 @@ export default function Home() {
             padding-top: 4rem;
             padding-bottom: 4rem;
           }
+        }
+
+        .esports-swiper {
+          width: 100%;
+          padding: 40px 0;
+        }
+        
+        .esports-swiper .swiper-slide {
+          width: 100%;
+          height: auto;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          transform: none !important;
+          filter: none !important;
+          background: none !important;
+          border: none !important;
+          box-shadow: none !important;
+        }
+        
+        .esports-swiper .swiper-button-next,
+        .esports-swiper .swiper-button-prev {
+          color: rgba(179, 198, 209, 0.9);
+          background: rgba(32, 49, 63, 0.7);
+          width: 35px;
+          height: 35px;
+          border-radius: 50%;
+          border: 1px solid rgba(179, 198, 209, 0.3);
+        }
+        
+        .esports-swiper .swiper-button-next:after,
+        .esports-swiper .swiper-button-prev:after {
+          font-size: 16px;
+        }
+        
+        .esports-swiper .swiper-pagination {
+          bottom: 0px;
+        }
+        
+        .esports-swiper .swiper-pagination-bullet {
+          background: rgba(179, 198, 209, 0.7);
+          opacity: 0.5;
+        }
+        
+        .esports-swiper .swiper-pagination-bullet-active {
+          opacity: 1;
+          background: rgba(179, 198, 209, 1);
         }
       `}</style>
     </div>
