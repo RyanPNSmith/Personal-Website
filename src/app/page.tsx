@@ -37,11 +37,11 @@ export default function Home() {
   const smoothScrollWithOffset = (elementId: string) => {
     const element = document.getElementById(elementId);
     if (!element) return;
-    
+
     const offset = 64; // Height of the navbar
     const elementPosition = element.getBoundingClientRect().top;
     const offsetPosition = elementPosition + window.pageYOffset - offset;
-    
+
     window.scrollTo({
       top: offsetPosition,
       behavior: 'smooth'
@@ -86,7 +86,7 @@ export default function Home() {
     e.preventDefault();
     setIsSubmitting(true);
     setSubmitStatus(null);
-    
+
     try {
       // Using Formspree as a simple form submission service
       const response = await fetch('https://formspree.io/f/your_formspree_id', {
@@ -96,11 +96,11 @@ export default function Home() {
         },
         body: JSON.stringify(formData),
       });
-      
+
       if (!response.ok) {
         throw new Error('Failed to send message');
       }
-      
+
       console.log('Form submitted:', formData);
       setSubmitStatus('success');
       setFormData({
@@ -143,10 +143,10 @@ export default function Home() {
 
     // Initial call
     handleResize();
-    
+
     // Add event listener
     window.addEventListener('resize', handleResize);
-    
+
     // Clean up
     return () => window.removeEventListener('resize', handleResize);
   }, []);
@@ -198,7 +198,7 @@ export default function Home() {
         tags: ["Next.js", "Stripe", "MongoDB"]
       }
     ];
-    
+
     return projects[index % totalSlides];
   };
 
@@ -212,32 +212,32 @@ export default function Home() {
           <div className="flex justify-between items-center h-16">
             <div className="text-white font-bold text-xl pl-4">Ryan Smith</div>
             <div className="flex space-x-8 pr-4">
-              <a 
-                href="#about" 
+              <a
+                href="#about"
                 onClick={(e) => {
                   e.preventDefault();
                   scrollToElement('about');
-                }} 
+                }}
                 className="text-white hover:text-secondary transition-colors text-lg"
               >
                 about
               </a>
-              <a 
-                href="#projects" 
+              <a
+                href="#projects"
                 onClick={(e) => {
                   e.preventDefault();
                   scrollToElement('projects');
-                }} 
+                }}
                 className="text-white hover:text-secondary transition-colors text-lg"
               >
                 projects
               </a>
-              <a 
-                href="#contact" 
+              <a
+                href="#contact"
                 onClick={(e) => {
                   e.preventDefault();
                   scrollToElement('contact');
-                }} 
+                }}
                 className="text-white hover:text-secondary transition-colors text-lg"
               >
                 contact
@@ -267,19 +267,19 @@ export default function Home() {
             />
           </video>
         </div>
-        
+
         {/* Subtle dark overlay for text readability */}
         <div className="absolute inset-0 bg-black/30 z-0"></div>
-        
+
         <div className="text-center px-4 py-32 w-full h-full flex flex-col items-center justify-center min-h-screen relative z-10">
-          
-          <motion.div 
+
+          <motion.div
             className="absolute left-4 sm:left-6 md:left-12 top-[35%] transform -translate-y-1/2 flex flex-col items-start w-full md:w-auto"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 0.8 }}
           >
-            <motion.h1 
+            <motion.h1
               className="text-[2vw] sm:text-[3vw] md:text-[4vw] lg:text-[6vw] font-bold leading-[0.8] tracking-tighter"
               initial={{ opacity: 0, x: -100 }}
               animate={{ opacity: 1, x: 0 }}
@@ -287,7 +287,7 @@ export default function Home() {
             >
               SOFTWARE ENG
             </motion.h1>
-            <motion.div 
+            <motion.div
               className="flex items-center"
               initial={{ opacity: 0, scale: 0.5 }}
               animate={{ opacity: 1, scale: 1 }}
@@ -295,7 +295,7 @@ export default function Home() {
             >
               <span className="text-[3vw] sm:text-[3.5vw] md:text-[4vw] mx-4">&</span>
             </motion.div>
-            <motion.h1 
+            <motion.h1
               className="text-[4vw] sm:text-[3vw] md:text-[4vw] lg:text-[6vw] font-bold leading-[0.9] tracking-tighter"
               initial={{ opacity: 0, x: 100 }}
               animate={{ opacity: 1, x: 0 }}
@@ -304,54 +304,42 @@ export default function Home() {
               GAME DEV
             </motion.h1>
           </motion.div>
-          
-          <motion.div 
-            className="absolute bottom-32 sm:bottom-48 md:bottom-64 lg:bottom-72 right-4 sm:right-8 md:right-14 max-w-[60vw] sm:max-w-[45vw] md:max-w-[35vw] lg:max-w-[30vw] text-right"
-            initial={{ opacity: 0, y: 50 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 1, delay: 1.0, ease: "easeOut" }}
-          >
-            <p className="text-[1.8vw] sm:text-[1.8vw] md:text-[2vw] lg:text-[1.3vw]">
-              I AM A SOFTWARE ENGINEER AND GAME DEVELOPER BASED IN TEXAS. I DESIGN AND BUILD SOFTWARE AND GAMES. I LOVE NATURE, TECHNOLOGY AND ART.
-            </p>
-          </motion.div>
-          
-          <motion.div 
+          <motion.div
             className="absolute bottom-16 sm:bottom-32 md:bottom-48 right-8 sm:right-16"
             initial={{ opacity: 0, scale: 0.8 }}
             animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 1.5, delay: 1.0, ease: "easeOut" }}
+            transition={{ duration: 2, delay: 1.0, ease: "easeOut" }}
           >
-            <a 
-              href="#contact" 
+            <a
+              href="#contact"
               onClick={(e) => {
                 e.preventDefault();
                 scrollToElement('contact');
-              }} 
+              }}
               className="border border-white/50 text-white hover:bg-white/10 transition-colors rounded-full px-8 md:px-16 py-3 inline-block text-sm sm:text-base md:text-lg"
             >
               CONTACT ME
             </a>
           </motion.div>
         </div>
-        
+
         {/* Bottom fade gradient overlay */}
         <div className="absolute bottom-0 left-0 w-full h-[40vh] bg-gradient-to-t from-black via-black/30 to-transparent z-[2]"></div>
-        
+
         {/* Scroll down indicator */}
-        <motion.div 
+        <motion.div
           className="absolute bottom-[15vh] left-1/2 transform -translate-x-1/2 z-20"
           initial={{ opacity: 0, y: -100 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ 
-            duration: 0.8, 
-            delay: 4.0,
+          transition={{
+            duration: 0.8,
+            delay: 3.0,
             type: "spring",
             stiffness: 100,
             damping: 15
           }}
         >
-          <button 
+          <button
             onClick={() => {
               const aboutSection = document.getElementById('about');
               if (aboutSection) {
@@ -363,22 +351,22 @@ export default function Home() {
           >
             <div className="flex flex-col items-center cursor-pointer">
               <div className="animate-subtle-bounce flex flex-col items-center">
-                <img 
-                  src="/PixelChain-export.png" 
-                  alt="Chain" 
-                  className="h-8 w-auto opacity-80 hover:opacity-100 transition-opacity rotate-180" 
+                <img
+                  src="/PixelChain-export.png"
+                  alt="Chain"
+                  className="h-8 w-auto opacity-80 hover:opacity-100 transition-opacity rotate-180"
                 />
-                <img 
-                  src="/PixelChain-export.png" 
-                  alt="Chain" 
+                <img
+                  src="/PixelChain-export.png"
+                  alt="Chain"
                   className="h-8 w-auto opacity-80 hover:opacity-100 transition-opacity -mt-1"
                 />
-                <img 
-                  src="/PixelAnchor-export.png" 
-                  alt="Anchor" 
+                <img
+                  src="/PixelAnchor-export.png"
+                  alt="Anchor"
                   className="h-16 w-auto opacity-80 hover:opacity-100 transition-opacity -mt-1"
                 />
-                
+
               </div>
               <span className="text-secondary text-sm opacity-70 hover:opacity-100 transition-opacity mt-2">Scroll Down</span>
             </div>
@@ -388,7 +376,7 @@ export default function Home() {
 
       {/* About Section */}
       <section id="about" className="bg-transparent text-white py-[20vh] relative z-10 scroll-mt-16 mt-[15vh]">
-        <motion.div 
+        <motion.div
           className="w-[95vw] max-w-[2000px] mx-auto pt-[8vh] pb-[8vh] min-h-[90vh]"
           initial="hidden"
           whileInView="visible"
@@ -400,14 +388,14 @@ export default function Home() {
           }}
         >
           <div className="mb-[8vh] pl-[4vw]">
-            <motion.h2 
+            <motion.h2
               className="text-[2.5vw] sm:text-[2.8vw] md:text-[3vw] lg:text-[3.2vw] font-bold text-white tracking-tighter relative inline-block"
               initial={{ opacity: 0, x: -50 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.8, ease: "easeOut" }}
             >
               ABOUT ME
-              <motion.div 
+              <motion.div
                 className="absolute -bottom-2 left-0 w-full h-[2px] bg-secondary"
                 initial={{ scaleX: 0 }}
                 animate={{ scaleX: 1 }}
@@ -423,11 +411,10 @@ export default function Home() {
                 <motion.button
                   key={section}
                   onClick={() => setActiveSection(section)}
-                  className={`text-left py-[1.5vh] px-[1.2vw] rounded-lg transition-all text-[1vw] min-text-[14px] ${
-                    activeSection === section 
-                      ? 'bg-secondary/20 text-white border-l-4 border-secondary font-medium' 
-                      : 'text-white/60 hover:text-white hover:bg-white/5'
-                  }`}
+                  className={`text-left py-[1.5vh] px-[1.2vw] rounded-lg transition-all text-[1vw] min-text-[14px] ${activeSection === section
+                    ? 'bg-secondary/20 text-white border-l-4 border-secondary font-medium'
+                    : 'text-white/60 hover:text-white hover:bg-white/5'
+                    }`}
                   whileHover={{ x: 5 }}
                   whileTap={{ scale: 0.95 }}
                 >
@@ -469,13 +456,66 @@ export default function Home() {
                         <p className="text-[1vw] min-text-[14px] text-white/80 leading-relaxed">
                           As President of the Computer Science Society, I lead a vibrant community of tech enthusiasts, organizing technical workshops, guest speaker events, and student engagement opportunities. I've built experience through full-stack web development, Unity game projects, and IT support roles.
                         </p>
+                        <div className="w-[80%] mx-auto mt-6">
+                          <Swiper
+                            effect={'coverflow'}
+                            grabCursor={true}
+                            centeredSlides={true}
+                            slidesPerView={1}
+                            coverflowEffect={{
+                              rotate: 0,
+                              stretch: 0,
+                              depth: 100,
+                              modifier: 1,
+                              slideShadows: false,
+                            }}
+                            pagination={{ clickable: true }}
+                            navigation={true}
+                            modules={[EffectCoverflow, Pagination, Navigation]}
+                            className="esports-swiper"
+                          >
+                            <SwiperSlide>
+                              <div className="aspect-[16/9] relative rounded-lg overflow-hidden border border-secondary/30 h-[40vh]">
+                                <Image
+                                  src="/CSSFreshmanSem.jpg"
+                                  alt="Computer Science Society Event"
+                                  fill
+                                  className="object-cover"
+                                  priority
+                                />
+                              </div>
+                            </SwiperSlide>
+                            <SwiperSlide>
+                              <div className="aspect-[16/9] relative rounded-lg overflow-hidden border border-secondary/30 h-[40vh]">
+                                <Image
+                                  src="/CSSociety2.jpg"
+                                  alt="Computer Science Society Workshop"
+                                  fill
+                                  className="object-cover"
+                                  priority
+                                />
+                              </div>
+                            </SwiperSlide>
+                            <SwiperSlide>
+                              <div className="aspect-[16/9] relative rounded-lg overflow-hidden border border-secondary/30 h-[40vh]">
+                                <Image
+                                  src="/CSSociety3.jpg"
+                                  alt="Computer Science Society Meeting"
+                                  fill
+                                  className="object-cover"
+                                  priority
+                                />
+                              </div>
+                            </SwiperSlide>
+                          </Swiper>
+                        </div>
                       </div>
-                      
+
                       <div>
                         <h3 className="text-[1.5vw] min-text-[18px] font-bold text-secondary mb-4">TCU Esports League of Legends Team</h3>
                         <div className="flex flex-col gap-6">
                           <p className="text-[1vw] min-text-[14px] text-white/80 leading-relaxed">
-                            Competing in collegiate League of Legends tournaments, I've developed strong teamwork and strategic thinking skills while representing TCU in esports competitions. This experience has enhanced my ability to work under pressure and collaborate effectively in high-stakes environments.
+                            Competing in collegiate League of Legends tournaments, I've developed strong teamwork and strategic thinking skills while representing TCU in esports competitions. Notably, I've participated in the annual "Esports Iron Skillet" tournament against SMU, which began in February 2022, and have proudly contributed to TCU's consecutive victories in both 2024 and 2025. This experience has enhanced my ability to work under pressure and collaborate effectively in high-stakes environments.
                           </p>
                           <div className="w-[80%] mx-auto">
                             <Swiper
@@ -560,14 +600,14 @@ export default function Home() {
       <section id="projects" className="bg-transparent text-white py-28 relative z-10 scroll-mt-16">
         <div className="max-w-7xl mx-auto pt-12 pb-16">
           <div className="mb-20 pl-4 sm:pl-6 md:pl-12">
-            <motion.h2 
+            <motion.h2
               className="text-[3vw] sm:text-[3.5vw] md:text-[4vw] lg:text-[4.5vw] font-bold text-white tracking-tighter relative inline-block"
               initial={{ opacity: 0, x: -50 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.8, ease: "easeOut" }}
             >
               PROJECTS
-              <motion.div 
+              <motion.div
                 className="absolute -bottom-2 left-0 w-full h-[2px] bg-secondary"
                 initial={{ scaleX: 0 }}
                 animate={{ scaleX: 1 }}
@@ -575,7 +615,7 @@ export default function Home() {
               />
             </motion.h2>
           </div>
-          
+
           {/* Project cards with Swiper */}
           <div className="max-w-full w-full mx-auto">
             <Swiper
@@ -602,7 +642,7 @@ export default function Home() {
             >
               {Array.from({ length: totalSlides }).map((_, index) => (
                 <SwiperSlide key={index} className="swiper-slide">
-                  <ProjectCard 
+                  <ProjectCard
                     project={getProjectData(index)}
                     isActive={index === currentSlide}
                   />
@@ -617,14 +657,14 @@ export default function Home() {
       <section id="contact" className="bg-transparent text-white py-28 relative z-10 scroll-mt-16">
         <div className="max-w-7xl mx-auto pt-12 pb-16">
           <div className="mb-20 pl-4 sm:pl-6 md:pl-12">
-            <motion.h2 
+            <motion.h2
               className="text-[3vw] sm:text-[3.5vw] md:text-[4vw] lg:text-[4.5vw] font-bold text-white tracking-tighter relative inline-block"
               initial={{ opacity: 0, x: -50 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.8, ease: "easeOut" }}
             >
               CONTACT
-              <motion.div 
+              <motion.div
                 className="absolute -bottom-2 left-0 w-full h-[2px] bg-secondary"
                 initial={{ scaleX: 0 }}
                 animate={{ scaleX: 1 }}
@@ -632,14 +672,14 @@ export default function Home() {
               />
             </motion.h2>
           </div>
-          
+
           <p className="text-lg text-white/80 mb-12 max-w-2xl">
             Feel free to reach out to me with any questions or opportunities.
           </p>
-          
+
           <div className="flex flex-col items-start justify-start mt-8">
-            <a 
-              href="mailto:ryanpsmith2003@outlook.com" 
+            <a
+              href="mailto:ryanpsmith2003@outlook.com"
               className="inline-flex items-center px-8 py-4 bg-secondary text-background-dark rounded-md hover:bg-secondary-light focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-secondary transition-all transform hover:scale-105 duration-200 text-lg font-medium"
             >
               <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 mr-3" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -863,8 +903,8 @@ export default function Home() {
 
 // Project Card Component
 function ProjectCard({ project, isActive }: ProjectCardProps) {
-  return (  
-    <div 
+  return (
+    <div
       className="bg-gradient-to-br from-background-dark/80 to-background-dark p-4 sm:p-6 md:p-8 lg:p-10 shadow-lg border border-secondary/30 flex flex-col rounded-xl h-full transition-all"
     >
       <div className="bg-secondary/20 p-3 sm:p-4 md:p-5 rounded-lg mb-4 sm:mb-6 inline-block backdrop-blur-sm">
