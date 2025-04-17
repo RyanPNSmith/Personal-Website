@@ -50,14 +50,11 @@ export default function Home() {
 
   // A consistent scroll function for all navigation links
   const scrollToElement = (id: string) => {
-    const offset = 64; // Height of navbar
     const element = document.getElementById(id);
     if (element) {
-      const elementPosition = element.getBoundingClientRect().top;
-      const offsetPosition = elementPosition + window.scrollY - offset;
-      window.scrollTo({
-        top: offsetPosition,
-        behavior: 'smooth'
+      element.scrollIntoView({
+        behavior: 'smooth',
+        block: 'start'
       });
     }
   };
@@ -157,16 +154,7 @@ export default function Home() {
     if (window.location.hash) {
       const id = window.location.hash.substring(1);
       setTimeout(() => {
-        const element = document.getElementById(id);
-        if (element) {
-          window.scrollTo({
-            top: element.offsetTop - 64,
-            behavior: 'smooth'
-          });
-          console.log(`Scrolled to ${id} on load`);
-        } else {
-          console.log(`Element with id ${id} not found on load`);
-        }
+        scrollToElement(id);
       }, 500); // Delay to ensure the page is fully loaded
     }
   }, []);
@@ -375,9 +363,9 @@ export default function Home() {
       </section>
 
       {/* About Section */}
-      <section id="about" className="bg-transparent text-white py-[20vh] relative z-10 scroll-mt-16 mt-[15vh]">
+      <section id="about" className="bg-transparent text-white py-[20vh] relative z-10 scroll-mt-[70px] mt-[15vh]">
         <motion.div
-          className="w-[95vw] max-w-[2000px] mx-auto pt-[8vh] pb-[8vh] min-h-[90vh]"
+          className="w-[95vw] max-w-[2000px] mx-auto pt-[8vh] pb-[4vh] min-h-[90vh]"
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, amount: 0.3 }}
@@ -424,7 +412,7 @@ export default function Home() {
             </div>
 
             {/* Content Area */}
-            <div className="flex-1 relative min-h-[60vh]">
+            <div className="flex-1 relative min-h-[60vh] max-h-[90vh] overflow-y-auto pr-4">
               <AnimatePresence mode="wait">
                 {activeSection === 'Biography' && (
                   <motion.div
@@ -454,7 +442,10 @@ export default function Home() {
                       <div>
                         <h3 className="text-[1.5vw] min-text-[18px] font-bold text-secondary mb-4">Computer Science Society President</h3>
                         <p className="text-[1vw] min-text-[14px] text-white/80 leading-relaxed">
-                          As President of the Computer Science Society, I lead a vibrant community of tech enthusiasts, organizing technical workshops, guest speaker events, and student engagement opportunities. I've built experience through full-stack web development, Unity game projects, and IT support roles.
+                          Computer Science Society (CSS) is a student organization at Texas Christian University that supports students in Computer Science, Computer Information Technology, and related fields. We work closely with the Department of Computer Science to host events, provide professional development opportunities, and build a strong sense of community within the major. One of our key roles is welcoming incoming students—helping them get acclimated to the program, connect with peers, and feel at home from the start.
+                        </p>
+                        <p className="text-[1vw] min-text-[14px] text-white/80 leading-relaxed mt-4">
+                          I currently serve as the President of CSS. With no formal cabinet, I manage all aspects of the organization—from planning and leading events to coordinating with faculty and maintaining our operations. My focus is on creating a space where students can grow, explore their interests, and support one another throughout their time at TCU.
                         </p>
                         <div className="w-[80%] mx-auto mt-6">
                           <Swiper
@@ -475,36 +466,51 @@ export default function Home() {
                             className="esports-swiper"
                           >
                             <SwiperSlide>
-                              <div className="aspect-[16/9] relative rounded-lg overflow-hidden border border-secondary/30 h-[40vh]">
-                                <Image
-                                  src="/CSSFreshmanSem.jpg"
-                                  alt="Computer Science Society Event"
-                                  fill
-                                  className="object-cover"
-                                  priority
-                                />
+                              <div className="flex flex-col">
+                                <div className="aspect-[16/9] relative rounded-lg overflow-hidden border border-secondary/30 h-[40vh]">
+                                  <Image
+                                    src="/CSSFreshmanSem.jpg"
+                                    alt="Computer Science Society Freshman Event"
+                                    fill
+                                    className="object-cover"
+                                    priority
+                                  />
+                                </div>
+                                <p className="text-[0.9vw] min-text-[12px] text-white/70 italic text-center mt-4 px-4">
+                                  This was a meeting specifically for freshmen. We helped get their computers ready with all the software needed for their four years, such as their preferred IDE, GitHub accounts, and all the free software available to students, along with answering any other questions they had.
+                                </p>
                               </div>
                             </SwiperSlide>
                             <SwiperSlide>
-                              <div className="aspect-[16/9] relative rounded-lg overflow-hidden border border-secondary/30 h-[40vh]">
-                                <Image
-                                  src="/CSSociety2.jpg"
-                                  alt="Computer Science Society Workshop"
-                                  fill
-                                  className="object-cover"
-                                  priority
-                                />
+                              <div className="flex flex-col">
+                                <div className="aspect-[16/9] relative rounded-lg overflow-hidden border border-secondary/30 h-[40vh]">
+                                  <Image
+                                    src="/CSSociety2.jpg"
+                                    alt="Computer Science Society Workshop"
+                                    fill
+                                    className="object-cover"
+                                    priority
+                                  />
+                                </div>
+                                <p className="text-[0.9vw] min-text-[12px] text-white/70 italic text-center mt-4 px-4">
+                                  Workshop session with students learning about modern development tools and collaborative coding techniques.
+                                </p>
                               </div>
                             </SwiperSlide>
                             <SwiperSlide>
-                              <div className="aspect-[16/9] relative rounded-lg overflow-hidden border border-secondary/30 h-[40vh]">
-                                <Image
-                                  src="/CSSociety3.jpg"
-                                  alt="Computer Science Society Meeting"
-                                  fill
-                                  className="object-cover"
-                                  priority
-                                />
+                              <div className="flex flex-col">
+                                <div className="aspect-[16/9] relative rounded-lg overflow-hidden border border-secondary/30 h-[40vh]">
+                                  <Image
+                                    src="/CSSociety3.jpg"
+                                    alt="Computer Science Society Meeting"
+                                    fill
+                                    className="object-cover"
+                                    priority
+                                  />
+                                </div>
+                                <p className="text-[0.9vw] min-text-[12px] text-white/70 italic text-center mt-4 px-4">
+                                  General meeting with the Computer Science Society members discussing upcoming events and opportunities.
+                                </p>
                               </div>
                             </SwiperSlide>
                           </Swiper>
@@ -536,36 +542,51 @@ export default function Home() {
                               className="esports-swiper"
                             >
                               <SwiperSlide>
-                                <div className="aspect-[16/9] relative rounded-lg overflow-hidden border border-secondary/30 h-[40vh]">
-                                  <Image
-                                    src="/Skillet.jpg"
-                                    alt="TCU Esports League of Legends Team"
-                                    fill
-                                    className="object-cover"
-                                    priority
-                                  />
+                                <div className="flex flex-col">
+                                  <div className="aspect-[16/9] relative rounded-lg overflow-hidden border border-secondary/30 h-[40vh]">
+                                    <Image
+                                      src="/Skillet.jpg"
+                                      alt="TCU Esports League of Legends Team"
+                                      fill
+                                      className="object-cover"
+                                      priority
+                                    />
+                                  </div>
+                                  <p className="text-[0.9vw] min-text-[12px] text-white/70 italic text-center mt-4 px-4">
+                                    TCU VS SMU Iron Skillet Trophy 2024.
+                                  </p>
                                 </div>
                               </SwiperSlide>
                               <SwiperSlide>
-                                <div className="aspect-[16/9] relative rounded-lg overflow-hidden border border-secondary/30 h-[40vh]">
-                                  <Image
-                                    src="/SkilletBump.jpg"
-                                    alt="TCU Esports Team Practice"
-                                    fill
-                                    className="object-cover"
-                                    priority
-                                  />
+                                <div className="flex flex-col">
+                                  <div className="aspect-[16/9] relative rounded-lg overflow-hidden border border-secondary/30 h-[40vh]">
+                                    <Image
+                                      src="/SkilletBump.jpg"
+                                      alt="TCU Esports Team Practice"
+                                      fill
+                                      className="object-cover"
+                                      priority
+                                    />
+                                  </div>
+                                  <p className="text-[0.9vw] min-text-[12px] text-white/70 italic text-center mt-4 px-4">
+                                    Team celebration after a  win.
+                                  </p>
                                 </div>
                               </SwiperSlide>
                               <SwiperSlide>
-                                <div className="aspect-[16/9] relative rounded-lg overflow-hidden border border-secondary/30 h-[40vh]">
-                                  <Image
-                                    src="/SkilletGame.jpg"
-                                    alt="TCU Esports Team Match"
-                                    fill
-                                    className="object-cover"
-                                    priority
-                                  />
+                                <div className="flex flex-col">
+                                  <div className="aspect-[16/9] relative rounded-lg overflow-hidden border border-secondary/30 h-[40vh]">
+                                    <Image
+                                      src="/SkilletGame.jpg"
+                                      alt="TCU Esports Team Match"
+                                      fill
+                                      className="object-cover"
+                                      priority
+                                    />
+                                  </div>
+                                  <p className="text-[0.9vw] min-text-[12px] text-white/70 italic text-center mt-4 px-4">
+                                    Picture of TCU's 2025 League of Legends Team
+                                  </p>
                                 </div>
                               </SwiperSlide>
                             </Swiper>
@@ -597,9 +618,9 @@ export default function Home() {
       </section>
 
       {/* Projects Section */}
-      <section id="projects" className="bg-transparent text-white py-28 relative z-10 scroll-mt-16">
-        <div className="max-w-7xl mx-auto pt-12 pb-16">
-          <div className="mb-20 pl-4 sm:pl-6 md:pl-12">
+      <section id="projects" className="bg-transparent text-white py-20 relative z-10 scroll-mt-[70px] mt-[-10vh]">
+        <div className="max-w-7xl mx-auto pt-0 pb-16">
+          <div className="mb-0 pl-4 sm:pl-6 md:pl-12">
             <motion.h2
               className="text-[3vw] sm:text-[3.5vw] md:text-[4vw] lg:text-[4.5vw] font-bold text-white tracking-tighter relative inline-block"
               initial={{ opacity: 0, x: -50 }}
@@ -654,7 +675,7 @@ export default function Home() {
       </section>
 
       {/* Contact Section */}
-      <section id="contact" className="bg-transparent text-white py-28 relative z-10 scroll-mt-16">
+      <section id="contact" className="bg-transparent text-white py-28 relative z-10 scroll-mt-[70px]">
         <div className="max-w-7xl mx-auto pt-12 pb-16">
           <div className="mb-20 pl-4 sm:pl-6 md:pl-12">
             <motion.h2
@@ -895,6 +916,11 @@ export default function Home() {
         .esports-swiper .swiper-pagination-bullet-active {
           opacity: 1;
           background: rgba(179, 198, 209, 1);
+        }
+
+        /* Fix for scrolling to sections */
+        section[id] {
+          scroll-margin-top: 70px;
         }
       `}</style>
     </div>
