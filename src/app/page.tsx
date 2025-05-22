@@ -6,6 +6,7 @@ import { Swiper, SwiperSlide } from 'swiper/react'
 import { EffectCoverflow, Pagination, Navigation } from 'swiper/modules'
 import { motion, AnimatePresence } from 'framer-motion'
 import Image from 'next/image'
+import NavBar from '../components/NavBar'
 
 // Import Swiper styles
 import 'swiper/css'
@@ -194,46 +195,7 @@ export default function Home() {
 
   return (
     <div className="flex flex-col min-h-screen bg-gradient-to-b from-black via-black to-background-dark">
-      {/* Blurred Navigation Bar with gradient */}
-      <nav className="fixed top-0 left-0 w-full backdrop-blur-lg bg-gradient-to-r from-black/70 to-background-dark/70 z-50 shadow-md border-b border-white/10">
-        <div className="w-full px-0 sm:px-2">
-          <div className="flex justify-between items-center h-16">
-            <div className="text-white font-bold text-xl pl-4">Ryan Smith</div>
-            <div className="flex space-x-8 pr-4">
-              <a
-                href="#about"
-                onClick={(e) => {
-                  e.preventDefault();
-                  scrollToElement('about');
-                }}
-                className="text-white hover:text-secondary transition-colors text-lg"
-              >
-                about
-              </a>
-              <a
-                href="#projects"
-                onClick={(e) => {
-                  e.preventDefault();
-                  scrollToElement('projects');
-                }}
-                className="text-white hover:text-secondary transition-colors text-lg"
-              >
-                projects
-              </a>
-              <a
-                href="#contact"
-                onClick={(e) => {
-                  e.preventDefault();
-                  scrollToElement('contact');
-                }}
-                className="text-white hover:text-secondary transition-colors text-lg"
-              >
-                contact
-              </a>
-            </div>
-          </div>
-        </div>
-      </nav>
+      <NavBar fromColor="rgba(0, 0, 0, 0.2)" toColor="rgba(26, 26, 46, 0.2)" textColor="white" />
 
       {/* Hero Section */}
       <section className="bg-transparent text-text-light flex-grow flex flex-col items-center justify-center pt-20 bg-cover bg-center relative z-0 overflow-hidden">
@@ -375,9 +337,10 @@ export default function Home() {
             visible: { opacity: 1, y: 0 },
           }}
         >
-          <div className="mb-[8vh] pl-[4vw]">
+          {/* About Me Section Title */}
+          <div className="flex justify-center mb-[8vh]">
             <motion.h2
-              className="text-[2.5vw] sm:text-[2.8vw] md:text-[3vw] lg:text-[3.2vw] font-bold text-white tracking-tighter relative inline-block"
+              className="text-center text-[2.5vw] sm:text-[2.8vw] md:text-[3vw] lg:text-[3.2vw] font-bold text-white tracking-tighter relative inline-block"
               initial={{ opacity: 0, x: -50 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.8, ease: "easeOut" }}
@@ -392,7 +355,7 @@ export default function Home() {
             </motion.h2>
           </div>
 
-          <div className="flex gap-[4vw] px-[4vw] min-h-[70vh]">
+          <div className="flex gap-[4vw] px-[4vw] min-h-[85vh]">
             {/* Left Navigation */}
             <div className="w-[15vw] min-w-[150px] flex flex-col gap-[3vh]">
               {['Biography', 'Involvement', 'Personal Life'].map((section) => (
@@ -412,7 +375,7 @@ export default function Home() {
             </div>
 
             {/* Content Area */}
-            <div className="flex-1 relative min-h-[60vh] max-h-[90vh] overflow-y-auto pr-4">
+            <div className="flex-1 relative min-h-[75vh] max-h-[95vh] overflow-y-auto pr-4">
               <AnimatePresence mode="wait">
                 {activeSection === 'Biography' && (
                   <motion.div
@@ -423,8 +386,26 @@ export default function Home() {
                     transition={{ duration: 0.3 }}
                     className="absolute w-full"
                   >
+                    <h3 className="text-[1.5vw] min-text-[18px] font-bold text-secondary mb-4">My Story</h3>
                     <p className="text-[1vw] min-text-[14px] text-white/80 leading-relaxed">
-                      Hello, my name is Ryan Smith, I'm a senior at Texas Christian University majoring in Computer Science, graduating in May 2025. I'm passionate about software engineering and plan to pursue it as my primary career path. My journey in technology began with early experiments in game development, which evolved into a deep fascination with software engineering and its potential to create impactful solutions.
+                    Hello, I'm Ryan Smith. I recently graduated from TCU with a B.S. in Computer Science and a minor in Mathematics. I've always been passionate about software engineering, and I'm especially drawn to game development it's what first sparked my interest in tech. Since then, I've been building projects that blend creativity and code, and I'm excited to keep pushing that passion forward.
+                    </p>
+                    <div className="w-[80%] mx-auto mt-6">
+                          
+                          <div className="flex flex-col">
+                            <div className="aspect-[16/9] relative rounded-lg overflow-hidden h-[90vh] bg-black/40 flex items-center justify-center">
+                              <Image
+                                src="/GradPhoto1.JPG"
+                                alt="Ryan Graduation Photo"
+                                fill
+                                className="object-contain"
+                                priority
+                              />
+                            </div>
+                          </div>
+                        </div>
+                        <p className="text-[1vw] min-text-[12px] text-white/80 leading-relaxed">
+                        I'm currently looking for a job in the software engineering industry or game development, and I'm always looking to connect with other developers, learn from new experiences, and grow in this field together.
                     </p>
                   </motion.div>
                 )}
@@ -442,30 +423,13 @@ export default function Home() {
                       <div>
                         <h3 className="text-[1.5vw] min-text-[18px] font-bold text-secondary mb-4">Computer Science Society President</h3>
                         <p className="text-[1vw] min-text-[14px] text-white/80 leading-relaxed">
-                          Computer Science Society (CSS) is a student organization at Texas Christian University that supports students in Computer Science, Computer Information Technology, and related fields. We work closely with the Department of Computer Science to host events, provide professional development opportunities, and build a strong sense of community within the major. One of our key roles is welcoming incoming students—helping them get acclimated to the program, connect with peers, and feel at home from the start.
+                          Computer Science Society (CSS) is a student organization at Texas Christian University that supports students in Computer Science, Computer Information Technology, and related fields. I worked closely with the Department of Computer Science to host events, provide professional development opportunities, and build a strong sense of community within the major. One of my key roles is welcoming incoming students helping them get acclimated to the program, connect with peers, and feel at home from the start.
                         </p>
                         <p className="text-[1vw] min-text-[14px] text-white/80 leading-relaxed mt-4">
-                          I currently serve as the President of CSS. With no formal cabinet, I manage all aspects of the organization—from planning and leading events to coordinating with faculty and maintaining our operations. My focus is on creating a space where students can grow, explore their interests, and support one another throughout their time at TCU.
+                          I served as the President of CSS. With no formal cabinet, I managed all aspects of the organization from planning and leading events to coordinating with faculty and maintaining our operations. My focus is on creating a space where students can grow, explore their interests, and support one another throughout their time at TCU.
                         </p>
                         <div className="w-[80%] mx-auto mt-6">
-                          <Swiper
-                            effect={'coverflow'}
-                            grabCursor={true}
-                            centeredSlides={true}
-                            slidesPerView={1}
-                            coverflowEffect={{
-                              rotate: 0,
-                              stretch: 0,
-                              depth: 100,
-                              modifier: 1,
-                              slideShadows: false,
-                            }}
-                            pagination={{ clickable: true }}
-                            navigation={true}
-                            modules={[EffectCoverflow, Pagination, Navigation]}
-                            className="esports-swiper"
-                          >
-                            <SwiperSlide>
+                          
                               <div className="flex flex-col">
                                 <div className="aspect-[16/9] relative rounded-lg overflow-hidden border border-secondary/30 h-[40vh]">
                                   <Image
@@ -480,40 +444,6 @@ export default function Home() {
                                   This was a meeting specifically for freshmen. We helped get their computers ready with all the software needed for their four years, such as their preferred IDE, GitHub accounts, and all the free software available to students, along with answering any other questions they had.
                                 </p>
                               </div>
-                            </SwiperSlide>
-                            <SwiperSlide>
-                              <div className="flex flex-col">
-                                <div className="aspect-[16/9] relative rounded-lg overflow-hidden border border-secondary/30 h-[40vh]">
-                                  <Image
-                                    src="/CSSociety2.jpg"
-                                    alt="Computer Science Society Workshop"
-                                    fill
-                                    className="object-cover"
-                                    priority
-                                  />
-                                </div>
-                                <p className="text-[0.9vw] min-text-[12px] text-white/70 italic text-center mt-4 px-4">
-                                  Workshop session with students learning about modern development tools and collaborative coding techniques.
-                                </p>
-                              </div>
-                            </SwiperSlide>
-                            <SwiperSlide>
-                              <div className="flex flex-col">
-                                <div className="aspect-[16/9] relative rounded-lg overflow-hidden border border-secondary/30 h-[40vh]">
-                                  <Image
-                                    src="/CSSociety3.jpg"
-                                    alt="Computer Science Society Meeting"
-                                    fill
-                                    className="object-cover"
-                                    priority
-                                  />
-                                </div>
-                                <p className="text-[0.9vw] min-text-[12px] text-white/70 italic text-center mt-4 px-4">
-                                  General meeting with the Computer Science Society members discussing upcoming events and opportunities.
-                                </p>
-                              </div>
-                            </SwiperSlide>
-                          </Swiper>
                         </div>
                       </div>
 
@@ -607,8 +537,50 @@ export default function Home() {
                     className="absolute w-full"
                   >
                     <p className="text-[1vw] min-text-[14px] text-white/80 leading-relaxed">
-                      Beyond coding, I'm deeply passionate about nature and outdoor activities. I find inspiration in the intersection of technology and art, often exploring creative coding projects in my free time. I believe in maintaining a healthy work-life balance and continuously learning from both professional experiences and personal interests. When not coding, you might find me hiking, experimenting with digital art, or contributing to open-source projects.
+                    Outside of coding, I'm passionate about weightlifting, playing guitar, cooking and baking, and gaming. Whether I'm trying out a new recipe, working on a tricky solo, or diving into a favorite game, I enjoy spending my free time doing things that keep me creative, engaged, and active 
                     </p>
+                    <div className="w-[80%] mx-auto mt-6">
+                      <Swiper
+                        effect={'coverflow'}
+                        grabCursor={true}
+                        centeredSlides={true}
+                        slidesPerView={1}
+                        coverflowEffect={{
+                          rotate: 0,
+                          stretch: 0,
+                          depth: 100,
+                          modifier: 1,
+                          slideShadows: false,
+                        }}
+                        pagination={{ clickable: true }}
+                        navigation={true}
+                        modules={[EffectCoverflow, Pagination, Navigation]}
+                        className="esports-swiper"
+                      >
+                        <SwiperSlide>
+                          <div className="aspect-[16/9] relative rounded-lg overflow-hidden h-[70vh] bg-black/40 flex items-center justify-center">
+                            <Image
+                              src="/RyanSable.jpg"
+                              alt="My dog Sable"
+                              fill
+                              className="object-contain"
+                              priority
+                            />
+                          </div>
+                        </SwiperSlide>
+                        <SwiperSlide>
+                          <div className="aspect-[16/9] relative rounded-lg overflow-hidden h-[70vh] bg-black/40 flex items-center justify-center">
+                            <Image
+                              src="/Horse.jpg"
+                              alt="Riding a horse in the StockYards"
+                              fill
+                              className="object-contain"
+                              priority
+                            />
+                          </div>
+                        </SwiperSlide>
+                      </Swiper>
+                    </div>
                   </motion.div>
                 )}
               </AnimatePresence>
@@ -620,9 +592,9 @@ export default function Home() {
       {/* Projects Section */}
       <section id="projects" className="bg-transparent text-white py-20 relative z-10 scroll-mt-[70px] mt-[-10vh]">
         <div className="max-w-7xl mx-auto pt-0 pb-16">
-          <div className="mb-0 pl-4 sm:pl-6 md:pl-12">
+          <div className="flex justify-center mb-[8vh]">
             <motion.h2
-              className="text-[3vw] sm:text-[3.5vw] md:text-[4vw] lg:text-[4.5vw] font-bold text-white tracking-tighter relative inline-block"
+              className="text-center text-[2.5vw] sm:text-[2.8vw] md:text-[3vw] lg:text-[3.2vw] font-bold text-white tracking-tighter relative inline-block"
               initial={{ opacity: 0, x: -50 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.8, ease: "easeOut" }}
@@ -677,9 +649,9 @@ export default function Home() {
       {/* Contact Section */}
       <section id="contact" className="bg-transparent text-white py-28 relative z-10 scroll-mt-[70px]">
         <div className="max-w-7xl mx-auto pt-12 pb-16">
-          <div className="mb-20 pl-4 sm:pl-6 md:pl-12">
+          <div className="flex justify-center mb-[8vh]">
             <motion.h2
-              className="text-[3vw] sm:text-[3.5vw] md:text-[4vw] lg:text-[4.5vw] font-bold text-white tracking-tighter relative inline-block"
+              className="text-center text-[2.5vw] sm:text-[2.8vw] md:text-[3vw] lg:text-[3.2vw] font-bold text-white tracking-tighter relative inline-block"
               initial={{ opacity: 0, x: -50 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.8, ease: "easeOut" }}
@@ -758,9 +730,11 @@ export default function Home() {
           transform: scale(0.75);
           opacity: 0.7;
           border: 1px solid rgba(179, 198, 209, 0.2);
-          box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
-          background: linear-gradient(145deg, rgba(32, 49, 63, 0.8), rgba(32, 49, 63, 0.95));
+          box-shadow: 0 5px 15px rgba(0, 0, 0, 0);
+          background: linear-gradient(rgba(32, 49, 63, 0), rgba(32, 49, 63, 0)),
           position: relative;
+          overflow: hidden;
+          border-radius: 1rem;
         }
         
         @media (min-width: 640px) {
@@ -790,8 +764,11 @@ export default function Home() {
           opacity: 1;
           z-index: 10;
           box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
-          border: 1px solid rgba(179, 198, 209, 0.3);
-          background: linear-gradient(145deg, rgba(32, 49, 63, 0.7), rgba(32, 49, 63, 0.9));
+          border: 0px solid rgba(255, 255, 255, 0);
+          background: linear-gradient(rgba(137, 123, 174, 0.7), rgba(255, 255, 255, 0.7)),
+                      url('') center/cover;
+          overflow: hidden;
+          border-radius: 1rem;
         }
 
         .swiper-slide-prev,
@@ -929,11 +906,28 @@ export default function Home() {
 
 // Project Card Component
 function ProjectCard({ project, isActive }: ProjectCardProps) {
+  // Determine the link for the project
+  let projectLink = '#';
+  if (project.title === 'PsychWorks Report Generation Tool') {
+    projectLink = '/psychworks';
+  }
+
+  // Special styling for PsychWorks project
+  const isPsychWorks = project.title === 'PsychWorks Report Generation Tool';
+  
   return (
     <div
-      className="bg-gradient-to-br from-background-dark/80 to-background-dark p-4 sm:p-6 md:p-8 lg:p-10 shadow-lg border border-secondary/30 flex flex-col rounded-xl h-full transition-all"
+      className={`${
+        isPsychWorks 
+          ? 'bg-gradient-to-br from-background-dark/80 to-background-dark border-secondary/30' 
+          : 'bg-gradient-to-br from-background-dark/80 to-background-dark p-4 sm:p-6 md:p-8 lg:p-10 shadow-lg border border-secondary/30'
+      } flex flex-col rounded-xl h-full transition-all`}
     >
-      <div className="bg-secondary/20 p-3 sm:p-4 md:p-5 rounded-lg mb-4 sm:mb-6 inline-block backdrop-blur-sm">
+      <div className={`${
+        isPsychWorks 
+          ? 'bg-secondary/20' 
+          : 'bg-secondary/20 p-3 sm:p-4 md:p-5'
+      } rounded-lg mb-4 sm:mb-6 inline-block backdrop-blur-sm`}>
         <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 sm:h-8 sm:w-8 md:h-10 md:w-10 text-secondary" fill="none" viewBox="0 0 24 24" stroke="currentColor">
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d={project.icon} />
         </svg>
@@ -951,7 +945,7 @@ function ProjectCard({ project, isActive }: ProjectCardProps) {
           </span>
         ))}
       </div>
-      <a href="#" className={`text-secondary hover:text-secondary-light transition-colors inline-flex items-center mt-auto text-sm sm:text-base md:text-lg font-medium group ${isActive ? '' : 'pointer-events-none opacity-70'}`}>
+      <a href={projectLink} className={`text-secondary hover:text-secondary-light transition-colors inline-flex items-center mt-auto text-sm sm:text-base md:text-lg font-medium group ${isActive ? '' : 'pointer-events-none opacity-70'}`}>
         View Project
         <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 sm:h-5 sm:w-5 ml-2 transform group-hover:translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor">
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
@@ -959,4 +953,4 @@ function ProjectCard({ project, isActive }: ProjectCardProps) {
       </a>
     </div>
   );
-} 
+}
