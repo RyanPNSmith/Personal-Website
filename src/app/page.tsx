@@ -163,28 +163,30 @@ export default function Home() {
   const getProjectData = (index: number): ProjectData => {
     const projects: ProjectData[] = [
       {
-        title: "Darwin's Sandbox",
-        description: "An evolutionary simulation platform that demonstrates natural selection principles through interactive visualizations. Users can modify environmental parameters and observe how species adapt over generations.",
-        icon: "M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z",
-        tags: ["React", "TypeScript", "Canvas API"]
-      },
-      {
         title: "PsychWorks Report Generation Tool",
         description: "Led the development of a full-stack web application for PsychWorks, a neuropsychology clinic specializing in cognitive assessments. Designed and implemented a dynamic report generation system enabling clinicians to produce and export structured, editable documents based on patient data. Served as project lead, coordinating task delegation, development cycles, and client communication to ensure delivery of a scalable, user-friendly solution.",
         icon: "M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z",
         tags: ["Next.js", "React", "Vercel", "Supabase"]
       },
+
+
       {
-        title: "Task Manager",
-        description: "A productivity application designed to help users organize tasks, set priorities, and track progress with intuitive visualizations. Includes collaborative features and deadline reminders.",
-        icon: "M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z",
-        tags: ["React", "Firebase", "Material UI"]
+        title: "Constellation Connection",
+        description: "A unique Unity game where players pilot a ship through space, connecting stars with their cursor while navigating asteroid fields. The gameplay features an innovative mechanic where connecting stars increases ship speed, creating an engaging risk-reward system. Currently in development with plans for Steam release, this project demonstrates both technical implementation and game design skills.",
+        icon: "M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z",
+        tags: ["Unity", "C#", "Game Design", "Steam"]
       },
       {
         title: "E-commerce Platform",
         description: "A full-featured online shopping platform with secure payment processing, inventory management, and customer analytics. Includes a responsive design and personalized recommendation engine.",
         icon: "M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H6a3 3 0 00-3 3v8a3 3 0 003 3z",
         tags: ["Next.js", "Stripe", "MongoDB"]
+      },
+      {
+        title: "Space Fox",
+        description: "A technical demonstration project that explores the recreation of Nintendo's Star Fox gameplay mechanics in Unity. This project focused on implementing core features like rail-shooting mechanics, enemy AI patterns, and dynamic camera systems. The goal was to understand and replicate the tight controls and engaging gameplay that made the original Star Fox series so iconic.",
+        icon: "M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z",
+        tags: ["Unity", "C#", "Game Development", "3D"]
       }
     ];
 
@@ -208,7 +210,7 @@ export default function Home() {
             playsInline
             className="absolute inset-0 min-w-full min-h-full object-cover"
           >
-            <source src="/background-video.mp4" type="video/mp4" />
+            <source src="/Main/background-video.mp4" type="video/mp4" />
             {/* Fallback background in case video doesn't load */}
             <img
               src="https://images.unsplash.com/photo-1577083552761-0a73ea3b3b75?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80"
@@ -302,17 +304,17 @@ export default function Home() {
             <div className="flex flex-col items-center cursor-pointer">
               <div className="animate-subtle-bounce flex flex-col items-center">
                 <img
-                  src="/PixelChain-export.png"
+                  src="/Main/PixelChain-export.png"
                   alt="Chain"
                   className="h-8 w-auto opacity-80 hover:opacity-100 transition-opacity rotate-180"
                 />
                 <img
-                  src="/PixelChain-export.png"
+                  src="/Main/PixelChain-export.png"
                   alt="Chain"
                   className="h-8 w-auto opacity-80 hover:opacity-100 transition-opacity -mt-1"
                 />
                 <img
-                  src="/PixelAnchor-export.png"
+                  src="/Main/PixelAnchor-export.png"
                   alt="Anchor"
                   className="h-16 w-auto opacity-80 hover:opacity-100 transition-opacity -mt-1"
                 />
@@ -395,7 +397,7 @@ export default function Home() {
                           <div className="flex flex-col">
                             <div className="aspect-[16/9] relative rounded-lg overflow-hidden h-[90vh] bg-black/40 flex items-center justify-center">
                               <Image
-                                src="/GradPhoto1.JPG"
+                                src="/Main/GradPhoto1.JPG"
                                 alt="Ryan Graduation Photo"
                                 fill
                                 className="object-contain"
@@ -433,7 +435,7 @@ export default function Home() {
                               <div className="flex flex-col">
                                 <div className="aspect-[16/9] relative rounded-lg overflow-hidden border border-secondary/30 h-[40vh]">
                                   <Image
-                                    src="/CSSFreshmanSem.jpg"
+                                    src="/Main/CSSFreshmanSem.jpg"
                                     alt="Computer Science Society Freshman Event"
                                     fill
                                     className="object-cover"
@@ -475,7 +477,7 @@ export default function Home() {
                                 <div className="flex flex-col">
                                   <div className="aspect-[16/9] relative rounded-lg overflow-hidden border border-secondary/30 h-[40vh]">
                                     <Image
-                                      src="/Skillet.jpg"
+                                      src="/Main/Skillet.jpg"
                                       alt="TCU Esports League of Legends Team"
                                       fill
                                       className="object-cover"
@@ -491,7 +493,7 @@ export default function Home() {
                                 <div className="flex flex-col">
                                   <div className="aspect-[16/9] relative rounded-lg overflow-hidden border border-secondary/30 h-[40vh]">
                                     <Image
-                                      src="/SkilletBump.jpg"
+                                      src="/Main/SkilletBump.jpg"
                                       alt="TCU Esports Team Practice"
                                       fill
                                       className="object-cover"
@@ -507,7 +509,7 @@ export default function Home() {
                                 <div className="flex flex-col">
                                   <div className="aspect-[16/9] relative rounded-lg overflow-hidden border border-secondary/30 h-[40vh]">
                                     <Image
-                                      src="/SkilletGame.jpg"
+                                      src="/Main/SkilletGame.jpg"
                                       alt="TCU Esports Team Match"
                                       fill
                                       className="object-cover"
@@ -560,7 +562,7 @@ export default function Home() {
                         <SwiperSlide>
                           <div className="aspect-[16/9] relative rounded-lg overflow-hidden h-[70vh] bg-black/40 flex items-center justify-center">
                             <Image
-                              src="/RyanSable.jpg"
+                              src="/Main/RyanSable.jpg"
                               alt="My dog Sable"
                               fill
                               className="object-contain"
@@ -571,7 +573,7 @@ export default function Home() {
                         <SwiperSlide>
                           <div className="aspect-[16/9] relative rounded-lg overflow-hidden h-[70vh] bg-black/40 flex items-center justify-center">
                             <Image
-                              src="/Horse.jpg"
+                              src="/Main/Horse.jpg"
                               alt="Riding a horse in the StockYards"
                               fill
                               className="object-contain"
@@ -910,42 +912,68 @@ function ProjectCard({ project, isActive }: ProjectCardProps) {
   let projectLink = '#';
   if (project.title === 'PsychWorks Report Generation Tool') {
     projectLink = '/psychworks';
+  } else if (project.title === 'Constellation Connection') {
+    projectLink = '/constellation';
   }
 
-  // Special styling for PsychWorks project
+  // Determine if this is the PsychWorks project
   const isPsychWorks = project.title === 'PsychWorks Report Generation Tool';
-  
+
   return (
     <div
       className={`${
         isPsychWorks 
-          ? 'bg-gradient-to-br from-background-dark/80 to-background-dark border-secondary/30' 
-          : 'bg-gradient-to-br from-background-dark/80 to-background-dark p-4 sm:p-6 md:p-8 lg:p-10 shadow-lg border border-secondary/30'
+          ? 'bg-gradient-to-br from-[#897bae]/80 to-[#b3c6d1]/80' 
+          : 'bg-gradient-to-br from-background-dark/80 to-background-dark'
+      } p-4 sm:p-6 md:p-8 lg:p-10 shadow-lg border ${
+        isPsychWorks 
+          ? 'border-[#897bae]/30' 
+          : 'border-secondary/30'
       } flex flex-col rounded-xl h-full transition-all`}
     >
       <div className={`${
         isPsychWorks 
-          ? 'bg-secondary/20' 
-          : 'bg-secondary/20 p-3 sm:p-4 md:p-5'
-      } rounded-lg mb-4 sm:mb-6 inline-block backdrop-blur-sm`}>
-        <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 sm:h-8 sm:w-8 md:h-10 md:w-10 text-secondary" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          ? 'bg-[#5a4d7a]/20' 
+          : 'bg-secondary/20'
+      } p-3 sm:p-4 md:p-5 rounded-lg mb-4 sm:mb-6 inline-block backdrop-blur-sm`}>
+        <svg xmlns="http://www.w3.org/2000/svg" className={`h-6 w-6 sm:h-8 sm:w-8 md:h-10 md:w-10 ${
+          isPsychWorks 
+            ? 'text-[#5a4d7a]' 
+            : 'text-secondary'
+        }`} fill="none" viewBox="0 0 24 24" stroke="currentColor">
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d={project.icon} />
         </svg>
       </div>
-      <h3 className="text-xl sm:text-2xl md:text-3xl font-bold text-white mb-2 sm:mb-4">
+      <h3 className={`text-xl sm:text-2xl md:text-3xl font-bold ${
+        isPsychWorks 
+          ? 'text-[#5a4d7a]' 
+          : 'text-white'
+      } mb-2 sm:mb-4`}>
         {project.title}
       </h3>
-      <p className="text-sm sm:text-base md:text-lg text-white/80 mb-4 sm:mb-6 md:mb-8 flex-grow">
+      <p className={`text-sm sm:text-base md:text-lg ${
+        isPsychWorks 
+          ? 'text-white/90' 
+          : 'text-white/80'
+      } mb-4 sm:mb-6 md:mb-8 flex-grow`}>
         {project.description}
       </p>
       <div className="flex flex-wrap gap-1 sm:gap-2 mb-4 sm:mb-6 md:mb-8">
         {project.tags.map((tag: string, index: number) => (
-          <span key={index} className="bg-secondary/20 text-white px-2 sm:px-3 md:px-4 py-1 sm:py-1.5 rounded-full text-xs sm:text-sm font-medium backdrop-blur-sm border border-secondary/30">
+          <span key={index} className={`${
+            isPsychWorks 
+              ? 'bg-[#5a4d7a]/20 text-[#5a4d7a] border-[#5a4d7a]/30' 
+              : 'bg-secondary/20 text-white border-secondary/30'
+          } px-2 sm:px-3 md:px-4 py-1 sm:py-1.5 rounded-full text-xs sm:text-sm font-medium backdrop-blur-sm border`}>
             {tag}
           </span>
         ))}
       </div>
-      <a href={projectLink} className={`text-secondary hover:text-secondary-light transition-colors inline-flex items-center mt-auto text-sm sm:text-base md:text-lg font-medium group ${isActive ? '' : 'pointer-events-none opacity-70'}`}>
+      <a href={projectLink} className={`${
+        isPsychWorks 
+          ? 'text-[#5a4d7a] hover:text-[#5a4d7a]/80' 
+          : 'text-secondary hover:text-secondary-light'
+      } transition-colors inline-flex items-center mt-auto text-sm sm:text-base md:text-lg font-medium group ${isActive ? '' : 'pointer-events-none opacity-70'}`}>
         View Project
         <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 sm:h-5 sm:w-5 ml-2 transform group-hover:translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor">
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
@@ -953,4 +981,4 @@ function ProjectCard({ project, isActive }: ProjectCardProps) {
       </a>
     </div>
   );
-}
+} 
