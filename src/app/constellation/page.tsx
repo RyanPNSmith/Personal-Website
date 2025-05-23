@@ -9,8 +9,8 @@ function getRandomInt(min: number, max: number) {
 }
 
 const AsteriodSprites = [
-  '/Asteriod Sprite1.png', // Update with your actual filenames
-  '/Asteriod Sprite2.png'
+  '/ConstellationConnections/Asteriod Sprite1.png', // Update with your actual filenames
+  '/ConstellationConnections/Asteriod Sprite2.png'
 ];
 
 function Asteriod({ sprite, top, duration, delay, size, direction }: any) {
@@ -32,7 +32,7 @@ function Asteriod({ sprite, top, duration, delay, size, direction }: any) {
   );
 }
 
-export function AsteroidShow() {
+function AsteroidShow() {
   const [Asteriods, setAsteriods] = useState<any[]>([]);
 
   useEffect(() => {
