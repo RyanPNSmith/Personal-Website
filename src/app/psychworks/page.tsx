@@ -7,10 +7,12 @@ import { Navigation, Pagination } from 'swiper/modules';
 import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
+import { Analytics } from "@vercel/analytics/next";
 
 export default function PsychWorksProject() {
   return (
     <>
+      <Analytics />
       <NavBar fromColor="rgba(137, 123, 174, 0.7)" toColor="rgba(255, 255, 255, 0.7)" textColor="black" />
       <div className="min-h-screen bg-gradient-to-b from-[#897bae] to-white text-black py-20 px-4 pt-32">
         <div className="max-w-4xl mx-auto">

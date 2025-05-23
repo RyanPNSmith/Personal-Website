@@ -3,6 +3,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 import NavBar from '../../components/NavBar';
 import { useEffect, useState } from 'react';
+import { Analytics } from "@vercel/analytics/next";
 
 function getRandomInt(min: number, max: number) {
   return Math.floor(Math.random() * (max - min + 1)) + min;
@@ -86,6 +87,7 @@ function AsteroidShow() {
 export default function ConstellationProject() {
   return (
     <>
+      <Analytics />
       <NavBar fromColor="rgba(0, 0, 0, 0.2)" toColor="rgba(26, 26, 46, 0.2)" textColor="white" />
       <div className="min-h-screen bg-gradient-to-b from-black via-black to-background-dark text-white py-20 px-4 pt-32 relative overflow-hidden constellation-cursor">
         <AsteroidShow />

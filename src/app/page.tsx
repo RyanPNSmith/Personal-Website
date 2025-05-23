@@ -7,6 +7,7 @@ import { EffectCoverflow, Pagination, Navigation } from 'swiper/modules'
 import { motion, AnimatePresence } from 'framer-motion'
 import Image from 'next/image'
 import NavBar from '../components/NavBar'
+import { Analytics } from "@vercel/analytics/next"
 
 // Import Swiper styles
 import 'swiper/css'
@@ -197,6 +198,7 @@ export default function Home() {
 
   return (
     <div className="flex flex-col min-h-screen bg-gradient-to-b from-black via-black to-background-dark">
+      <Analytics />
       <NavBar fromColor="rgba(0, 0, 0, 0.2)" toColor="rgba(26, 26, 46, 0.2)" textColor="white" />
 
       {/* Hero Section */}
