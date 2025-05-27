@@ -48,7 +48,7 @@ export default function PsychWorksProject() {
 
             <div className="flex flex-col items-center mb-8">
               <Image
-                src="/TechStack.png"
+                src="/PsychWorks/TechStack.png"
                 alt="PsychWorks Technical Stack Diagram"
                 width={350}
                 height={350}

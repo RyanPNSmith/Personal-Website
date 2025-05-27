@@ -61,61 +61,6 @@ export default function Home() {
     }
   };
 
-  // Form states
-  const [formData, setFormData] = useState({
-    firstName: '',
-    lastName: '',
-    email: '',
-    message: ''
-  });
-  const [isSubmitting, setIsSubmitting] = useState(false);
-  const [submitStatus, setSubmitStatus] = useState<null | 'success' | 'error'>(null);
-
-  // Handle form input changes
-  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-    const { name, value } = e.target;
-    setFormData(prev => ({
-      ...prev,
-      [name]: value
-    }));
-  };
-
-  // Handle form submission
-  const handleSubmit = async (e: FormEvent) => {
-    e.preventDefault();
-    setIsSubmitting(true);
-    setSubmitStatus(null);
-
-    try {
-      // Using Formspree as a simple form submission service
-      const response = await fetch('https://formspree.io/f/your_formspree_id', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(formData),
-      });
-
-      if (!response.ok) {
-        throw new Error('Failed to send message');
-      }
-
-      console.log('Form submitted:', formData);
-      setSubmitStatus('success');
-      setFormData({
-        firstName: '',
-        lastName: '',
-        email: '',
-        message: ''
-      });
-    } catch (error) {
-      console.error('Form submission error:', error);
-      setSubmitStatus('error');
-    } finally {
-      setIsSubmitting(false);
-    }
-  };
-
   // Update slidesPerView based on window width
   useEffect(() => {
     const handleResize = () => {
@@ -239,7 +184,7 @@ export default function Home() {
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 2, delay: 0.4, ease: "easeOut" }}
             >
-              SOFTWARE ENG
+              SOFTWARE ENGINEERING
             </motion.h1>
             <motion.div
               className="flex items-center"
@@ -255,7 +200,7 @@ export default function Home() {
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 2, delay: 0.4, ease: "easeOut" }}
             >
-              GAME DEV
+              GAME DEVELOPMENT
             </motion.h1>
           </motion.div>
           <motion.div
@@ -920,24 +865,37 @@ function ProjectCard({ project, isActive }: ProjectCardProps) {
 
   // Determine if this is the PsychWorks project
   const isPsychWorks = project.title === 'PsychWorks Report Generation Tool';
+  const isConstellation = project.title === 'Constellation Connection';
 
   return (
     <div
-      className={`${
-        isPsychWorks 
+      className={`
+        ${isPsychWorks 
           ? 'bg-gradient-to-br from-[#897bae]/80 to-[#b3c6d1]/80' 
-          : 'bg-gradient-to-br from-background-dark/80 to-background-dark'
-      } p-4 sm:p-6 md:p-8 lg:p-10 shadow-lg border ${
-        isPsychWorks 
+          : isConstellation
+            ? 'relative bg-gradient-to-br from-background-dark/80 to-background-dark'
+            : 'bg-gradient-to-br from-background-dark/80 to-background-dark'}
+        p-4 sm:p-6 md:p-8 lg:p-10 shadow-lg border 
+        ${isPsychWorks 
           ? 'border-[#897bae]/30' 
-          : 'border-secondary/30'
-      } flex flex-col rounded-xl h-full transition-all`}
+          : 'border-secondary/30'} 
+        flex flex-col rounded-xl h-full transition-all
+      `}
     >
-      <div className={`${
-        isPsychWorks 
+      {/* Background image for Constellation Connection */}
+      {isConstellation && (
+        <img 
+          src="/ConstellationConnections/SlideImg.png" 
+          alt="Constellation Connection Background"
+          className="absolute inset-0 w-full h-full object-cover rounded-xl opacity-65 pointer-events-none z-0"
+        />
+      )}
+      <div className={`
+        ${isPsychWorks 
           ? 'bg-[#5a4d7a]/20' 
-          : 'bg-secondary/20'
-      } p-3 sm:p-4 md:p-5 rounded-lg mb-4 sm:mb-6 inline-block backdrop-blur-sm`}>
+          : 'bg-secondary/20'} 
+        p-3 sm:p-4 md:p-5 rounded-lg mb-4 sm:mb-6 inline-block backdrop-blur-sm relative z-10`}
+      >
         <svg xmlns="http://www.w3.org/2000/svg" className={`h-6 w-6 sm:h-8 sm:w-8 md:h-10 md:w-10 ${
           isPsychWorks 
             ? 'text-[#5a4d7a]' 
@@ -950,32 +908,32 @@ function ProjectCard({ project, isActive }: ProjectCardProps) {
         isPsychWorks 
           ? 'text-[#5a4d7a]' 
           : 'text-white'
-      } mb-2 sm:mb-4`}>
+      } mb-2 sm:mb-4 relative z-10`}>
         {project.title}
       </h3>
       <p className={`text-sm sm:text-base md:text-lg ${
         isPsychWorks 
           ? 'text-white/90' 
           : 'text-white/80'
-      } mb-4 sm:mb-6 md:mb-8 flex-grow`}>
+      } mb-4 sm:mb-6 md:mb-8 flex-grow relative z-10`}>
         {project.description}
       </p>
-      <div className="flex flex-wrap gap-1 sm:gap-2 mb-4 sm:mb-6 md:mb-8">
+      <div className="flex flex-wrap gap-1 sm:gap-2 mb-4 sm:mb-6 md:mb-8 relative z-10">
         {project.tags.map((tag: string, index: number) => (
-          <span key={index} className={`${
-            isPsychWorks 
+          <span key={index} className={`$
+            {isPsychWorks 
               ? 'bg-[#5a4d7a]/20 text-[#5a4d7a] border-[#5a4d7a]/30' 
-              : 'bg-secondary/20 text-white border-secondary/30'
-          } px-2 sm:px-3 md:px-4 py-1 sm:py-1.5 rounded-full text-xs sm:text-sm font-medium backdrop-blur-sm border`}>
+              : 'bg-secondary/20 text-white border-secondary/30'}
+            px-2 sm:px-3 md:px-4 py-1 sm:py-1.5 rounded-full text-xs sm:text-sm font-medium backdrop-blur-sm border`}>
             {tag}
           </span>
         ))}
       </div>
-      <a href={projectLink} className={`${
-        isPsychWorks 
+      <a href={projectLink} className={`$
+        {isPsychWorks 
           ? 'text-[#5a4d7a] hover:text-[#5a4d7a]/80' 
-          : 'text-secondary hover:text-secondary-light'
-      } transition-colors inline-flex items-center mt-auto text-sm sm:text-base md:text-lg font-medium group ${isActive ? '' : 'pointer-events-none opacity-70'}`}>
+          : 'text-secondary hover:text-secondary-light'}
+        transition-colors inline-flex items-center mt-auto text-sm sm:text-base md:text-lg font-medium group ${isActive ? '' : 'pointer-events-none opacity-70'} relative z-10`}>
         View Project
         <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 sm:h-5 sm:w-5 ml-2 transform group-hover:translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor">
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
