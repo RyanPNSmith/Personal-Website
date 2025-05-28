@@ -185,7 +185,7 @@ export default function ConstellationProject() {
             <div className="bg-black/40 p-6 rounded-lg mb-12 border border-secondary/30">
               <h2 className="text-3xl font-semibold text-secondary mb-6">Game Sprites</h2>
               <p className="text-xl text-white/80 mb-6">
-                Take a look at some of the sprites currently in the game. Click on any sprite to view it in full size.
+                Take a look at some of the sprites that I have made that are currently in the game. Click on any sprite to view it in full size.
               </p>
               <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
                 <div 

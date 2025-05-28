@@ -123,16 +123,16 @@ export default function Home() {
         tags: ["Unity", "C#", "Game Design", "Steam"]
       },
       {
-        title: "E-commerce Platform",
-        description: "A full-featured online shopping platform with secure payment processing, inventory management, and customer analytics. Includes a responsive design and personalized recommendation engine.",
+        title: "Darwin's Sandbox",
+        description: "A sandbox environment where neural networks evolve and adapt in a simulated ecosystem. Built using Unity and C#, this project demonstrates how artificial intelligence can evolve through natural selection principles in an interactive 3D environment.",
         icon: "M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H6a3 3 0 00-3 3v8a3 3 0 003 3z",
-        tags: ["Next.js", "Stripe", "MongoDB"]
+        tags: ["Neural Networks","Unity", "C#", "3D"]
       },
       {
-        title: "Space Fox",
-        description: "A technical demonstration project that explores the recreation of Nintendo's Star Fox gameplay mechanics in Unity. This project focused on implementing core features like rail-shooting mechanics, enemy AI patterns, and dynamic camera systems. The goal was to understand and replicate the tight controls and engaging gameplay that made the original Star Fox series so iconic.",
+        title: "Object Oriented Tanks",
+        description: "A 3D action shooter demonstrating object-oriented programming principles through engaging gameplay mechanics. Features include player movement, dynamic shooting with arc trajectories, health management, and intelligent enemy AI.",
         icon: "M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z",
-        tags: ["Unity", "C#", "Game Development", "3D"]
+        tags: ["Unity", "C#", "OOP", "3D"]
       }
     ];
 
@@ -597,29 +597,18 @@ export default function Home() {
 
       {/* Contact Section */}
       <section id="contact" className="bg-transparent text-white py-28 relative z-10 scroll-mt-[70px]">
-        <div className="max-w-7xl mx-auto pt-12 pb-16">
-          <div className="flex justify-center mb-[8vh]">
-            <motion.h2
-              className="text-center text-[2.5vw] sm:text-[2.8vw] md:text-[3vw] lg:text-[3.2vw] font-bold text-white tracking-tighter relative inline-block"
-              initial={{ opacity: 0, x: -50 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.8, ease: "easeOut" }}
-            >
-              CONTACT
-              <motion.div
-                className="absolute -bottom-2 left-0 w-full h-[2px] bg-secondary"
-                initial={{ scaleX: 0 }}
-                animate={{ scaleX: 1 }}
-                transition={{ duration: 0.8, delay: 0.4 }}
-              />
-            </motion.h2>
+        <div className="max-w-4xl mx-auto pt-12 pb-16">
+          <div className="flex justify-center mb-10">
+            <h2 className="text-center text-3xl md:text-7xl font-bold text-white tracking-tighter relative inline-block">
+              Get in Touch
+              <span className="block w-full h-1 bg-secondary mt-2"></span>
+            </h2>
           </div>
-
-          <p className="text-lg text-white/80 mb-12 max-w-2xl">
-            Feel free to reach out to me with any questions or opportunities.
+          <p className="text-xl text-white/80 mb-16 text-center max-w-2xl mx-auto">
+           want to connect? Feel free to reach out via email or connect with me on GitHub and LinkedIn!
           </p>
-
-          <div className="flex flex-col items-start justify-start mt-8">
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-6">
+            {/* Email */}
             <a
               href="mailto:ryanpsmith2003@outlook.com"
               className="inline-flex items-center px-8 py-4 bg-secondary text-background-dark rounded-md hover:bg-secondary-light focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-secondary transition-all transform hover:scale-105 duration-200 text-lg font-medium"
@@ -628,6 +617,30 @@ export default function Home() {
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
               </svg>
               ryanpsmith2003@outlook.com
+            </a>
+            {/* GitHub */}
+            <a
+              href="https://github.com/RyanPNSmith"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center px-8 py-4 bg-[#24292e] text-white rounded-md hover:bg-[#2c3238] focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#24292e] transition-all transform hover:scale-105 duration-200 text-lg font-medium"
+            >
+              <svg className="h-6 w-6 mr-3" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/>
+              </svg>
+              GitHub
+            </a>
+            {/* LinkedIn */}
+            <a
+              href="https://www.linkedin.com/in/ryan-smith-67717729b/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center px-8 py-4 bg-[#0077b5] text-white rounded-md hover:bg-[#005983] focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#0077b5] transition-all transform hover:scale-105 duration-200 text-lg font-medium"
+            >
+              <svg className="h-6 w-6 mr-3" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M19 0h-14c-2.76 0-5 2.24-5 5v14c0 2.76 2.24 5 5 5h14c2.76 0 5-2.24 5-5v-14c0-2.76-2.24-5-5-5zm-11 19h-3v-9h3v9zm-1.5-10.29c-.97 0-1.75-.79-1.75-1.75s.78-1.75 1.75-1.75 1.75.79 1.75 1.75-.78 1.75-1.75 1.75zm13.5 10.29h-3v-4.5c0-1.08-.02-2.47-1.5-2.47-1.5 0-1.73 1.17-1.73 2.39v4.58h-3v-9h2.89v1.23h.04c.4-.75 1.38-1.54 2.84-1.54 3.04 0 3.6 2 3.6 4.59v4.72z"/>
+              </svg>
+              LinkedIn
             </a>
           </div>
         </div>
@@ -861,11 +874,17 @@ function ProjectCard({ project, isActive }: ProjectCardProps) {
     projectLink = '/psychworks';
   } else if (project.title === 'Constellation Connection') {
     projectLink = '/constellation';
+  } else if (project.title === "Darwin's Sandbox") {
+    projectLink = '/darwinssandbox';
+  } else if (project.title === "Object Oriented Tanks") {
+    projectLink = '/OOT';
   }
 
   // Determine if this is the PsychWorks project
   const isPsychWorks = project.title === 'PsychWorks Report Generation Tool';
   const isConstellation = project.title === 'Constellation Connection';
+  const isDarwinSandbox = project.title === "Darwin's Sandbox";
+  const isOOT = project.title === "Object Oriented Tanks";
 
   return (
     <div
@@ -874,7 +893,11 @@ function ProjectCard({ project, isActive }: ProjectCardProps) {
           ? 'bg-gradient-to-br from-[#897bae]/80 to-[#b3c6d1]/80' 
           : isConstellation
             ? 'relative bg-gradient-to-br from-background-dark/80 to-background-dark'
-            : 'bg-gradient-to-br from-background-dark/80 to-background-dark'}
+            : isDarwinSandbox
+              ? 'bg-gradient-to-br from-[#31982f]/80 to-[#67d067]/80'
+              : isOOT
+                ? 'relative bg-gradient-to-br from-[#2c3e50]/80 to-[#3498db]/80'
+                : 'bg-gradient-to-br from-background-dark/80 to-background-dark'}
         p-4 sm:p-6 md:p-8 lg:p-10 shadow-lg border 
         ${isPsychWorks 
           ? 'border-[#897bae]/30' 
@@ -890,19 +913,101 @@ function ProjectCard({ project, isActive }: ProjectCardProps) {
           className="absolute inset-0 w-full h-full object-cover rounded-xl opacity-65 pointer-events-none z-0"
         />
       )}
+      {/* Image for Darwin's Sandbox */}
+      {isDarwinSandbox && (
+        <img
+          src="/DarwinSandbox/SwiperSlide.png"
+          alt="Darwin's Sandbox Preview"
+          className="absolute inset-0 w-full h-full object-cover rounded-xl opacity-65 pointer-events-none z-0"
+        />
+      )}
+      {/* Image for Object Oriented Tanks */}
+      {isOOT && (
+        <img
+          src="/OOT/SwiperSlideOOT.png"
+          alt="Object Oriented Tanks Preview"
+          className="absolute inset-0 w-full h-full object-cover rounded-xl opacity-65 pointer-events-none z-0"
+        />
+      )}
       <div className={`
         ${isPsychWorks 
           ? 'bg-[#5a4d7a]/20' 
           : 'bg-secondary/20'} 
         p-3 sm:p-4 md:p-5 rounded-lg mb-4 sm:mb-6 inline-block backdrop-blur-sm relative z-10`}
       >
-        <svg xmlns="http://www.w3.org/2000/svg" className={`h-6 w-6 sm:h-8 sm:w-8 md:h-10 md:w-10 ${
-          isPsychWorks 
-            ? 'text-[#5a4d7a]' 
-            : 'text-secondary'
-        }`} fill="none" viewBox="0 0 24 24" stroke="currentColor">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d={project.icon} />
-        </svg>
+        {isConstellation ? (
+          <img
+            src="/ConstellationConnections/Ship Sprite.png"
+            alt="Constellation Connection Ship Icon"
+            className="h-10 w-10 sm:h-12 sm:w-12 md:h-14 md:w-14 object-contain"
+            style={{ imageRendering: 'pixelated' }}
+          />
+        ) : isOOT ? (
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" className="h-10 w-10 sm:h-12 sm:w-12 md:h-14 md:w-14 text-secondary" fill="none">
+            <rect x="6" y="20" width="36" height="16" rx="8" fill="#b3c6d1" stroke="#5a4d7a" strokeWidth="2"/>
+            <circle cx="16" cy="28" r="2.5" fill="#5a4d7a"/>
+            <circle cx="32" cy="28" r="2.5" fill="#5a4d7a"/>
+            <rect x="22" y="26" width="4" height="4" rx="1" fill="#5a4d7a"/>
+            <rect x="12" y="24" width="2" height="8" rx="1" fill="#5a4d7a"/>
+            <rect x="34" y="24" width="2" height="8" rx="1" fill="#5a4d7a"/>
+          </svg>
+        ) : isDarwinSandbox ? (
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 48" className="h-10 w-10 sm:h-12 sm:w-12 md:h-14 md:w-14 text-secondary" fill="none">
+            {/* Input Layer */}
+            <circle cx="12" cy="14" r="3" fill="#67d067" stroke="#31982f" strokeWidth="1.5"/>
+            <circle cx="12" cy="24" r="3" fill="#67d067" stroke="#31982f" strokeWidth="1.5"/>
+            <circle cx="12" cy="34" r="3" fill="#67d067" stroke="#31982f" strokeWidth="1.5"/>
+            {/* Hidden Layer 1 */}
+            <circle cx="28" cy="10" r="3" fill="#67d067" stroke="#31982f" strokeWidth="1.5"/>
+            <circle cx="28" cy="20" r="3" fill="#67d067" stroke="#31982f" strokeWidth="1.5"/>
+            <circle cx="28" cy="28" r="3" fill="#67d067" stroke="#31982f" strokeWidth="1.5"/>
+            <circle cx="28" cy="38" r="3" fill="#67d067" stroke="#31982f" strokeWidth="1.5"/>
+            {/* Hidden Layer 2 */}
+            <circle cx="44" cy="14" r="3" fill="#67d067" stroke="#31982f" strokeWidth="1.5"/>
+            <circle cx="44" cy="24" r="3" fill="#67d067" stroke="#31982f" strokeWidth="1.5"/>
+            <circle cx="44" cy="34" r="3" fill="#67d067" stroke="#31982f" strokeWidth="1.5"/>
+            {/* Output Layer */}
+            <circle cx="58" cy="24" r="3" fill="#67d067" stroke="#31982f" strokeWidth="1.5"/>
+            {/* Connections: Input to Hidden 1 */}
+            <line x1="15" y1="14" x2="25" y2="10" stroke="#31982f" strokeWidth="1.2"/>
+            <line x1="15" y1="14" x2="25" y2="20" stroke="#31982f" strokeWidth="1.2"/>
+            <line x1="15" y1="14" x2="25" y2="28" stroke="#31982f" strokeWidth="1.2"/>
+            <line x1="15" y1="14" x2="25" y2="38" stroke="#31982f" strokeWidth="1.2"/>
+            <line x1="15" y1="24" x2="25" y2="10" stroke="#31982f" strokeWidth="1.2"/>
+            <line x1="15" y1="24" x2="25" y2="20" stroke="#31982f" strokeWidth="1.2"/>
+            <line x1="15" y1="24" x2="25" y2="28" stroke="#31982f" strokeWidth="1.2"/>
+            <line x1="15" y1="24" x2="25" y2="38" stroke="#31982f" strokeWidth="1.2"/>
+            <line x1="15" y1="34" x2="25" y2="10" stroke="#31982f" strokeWidth="1.2"/>
+            <line x1="15" y1="34" x2="25" y2="20" stroke="#31982f" strokeWidth="1.2"/>
+            <line x1="15" y1="34" x2="25" y2="28" stroke="#31982f" strokeWidth="1.2"/>
+            <line x1="15" y1="34" x2="25" y2="38" stroke="#31982f" strokeWidth="1.2"/>
+            {/* Connections: Hidden 1 to Hidden 2 */}
+            <line x1="31" y1="10" x2="41" y2="14" stroke="#31982f" strokeWidth="1.2"/>
+            <line x1="31" y1="10" x2="41" y2="24" stroke="#31982f" strokeWidth="1.2"/>
+            <line x1="31" y1="10" x2="41" y2="34" stroke="#31982f" strokeWidth="1.2"/>
+            <line x1="31" y1="20" x2="41" y2="14" stroke="#31982f" strokeWidth="1.2"/>
+            <line x1="31" y1="20" x2="41" y2="24" stroke="#31982f" strokeWidth="1.2"/>
+            <line x1="31" y1="20" x2="41" y2="34" stroke="#31982f" strokeWidth="1.2"/>
+            <line x1="31" y1="28" x2="41" y2="14" stroke="#31982f" strokeWidth="1.2"/>
+            <line x1="31" y1="28" x2="41" y2="24" stroke="#31982f" strokeWidth="1.2"/>
+            <line x1="31" y1="28" x2="41" y2="34" stroke="#31982f" strokeWidth="1.2"/>
+            <line x1="31" y1="38" x2="41" y2="14" stroke="#31982f" strokeWidth="1.2"/>
+            <line x1="31" y1="38" x2="41" y2="24" stroke="#31982f" strokeWidth="1.2"/>
+            <line x1="31" y1="38" x2="41" y2="34" stroke="#31982f" strokeWidth="1.2"/>
+            {/* Connections: Hidden 2 to Output */}
+            <line x1="47" y1="14" x2="55" y2="24" stroke="#31982f" strokeWidth="1.2"/>
+            <line x1="47" y1="24" x2="55" y2="24" stroke="#31982f" strokeWidth="1.2"/>
+            <line x1="47" y1="34" x2="55" y2="24" stroke="#31982f" strokeWidth="1.2"/>
+          </svg>
+        ) : (
+          <svg xmlns="http://www.w3.org/2000/svg" className={`h-6 w-6 sm:h-8 sm:w-8 md:h-10 md:w-10 ${
+            isPsychWorks 
+              ? 'text-[#5a4d7a]' 
+              : 'text-secondary'
+          }`} fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d={project.icon} />
+          </svg>
+        )}
       </div>
       <h3 className={`text-xl sm:text-2xl md:text-3xl font-bold ${
         isPsychWorks 
